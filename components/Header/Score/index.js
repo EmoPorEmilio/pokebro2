@@ -1,4 +1,3 @@
-import heartIcon from '../../../resources/heart-icon.png';
 import {
   ScoreContainer,
   ScorePoints,
@@ -10,6 +9,7 @@ import {
   Timer,
 } from './Score.styles.js';
 
+const heartIcon = '/resources/heart-icon.png';
 export const Score = ({ HP, scorePoints, handleHeaderBack, timer }) => {
   return (
     <ScoreContainer>

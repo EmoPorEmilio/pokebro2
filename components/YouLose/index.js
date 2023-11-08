@@ -1,7 +1,4 @@
 import { useEffect, useState, useMemo } from 'react';
-import pikachuSadGif from '../../resources/pokemon-sad.gif';
-import pikachuSadJPG from '../../resources/pokemon-sad.jpg';
-import shareTemplate from '../../resources/share-template.png';
 import {
   YouLoseCard,
   YouLoseContainer,
@@ -12,6 +9,9 @@ import {
 import { SYSTEM_MESSAGES, theme } from 'constants.js';
 import { b64toBlob } from '../../utils';
 
+const pikachuSadGif = 'resources/pokemon-sad.gif';
+const pikachuSadJPG = 'resources/pokemon-sad.jpg';
+const shareTemplate = 'resources/share-template.png';
 export const YouLose = ({ restartGame, scorePoints, difficulty, gameMode }) => {
   const [pikachuSad, setPikachuSad] = useState(null);
 
