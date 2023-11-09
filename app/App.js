@@ -1,4 +1,3 @@
-import { MainContainer } from './App.styles.js';
 import { useState } from 'react';
 import { PokemonGuesser } from './scenes/PokemonGuesser';
 import { Landing } from './scenes/Landing';
@@ -26,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <MainContainer>
+    <div className='bg-bg flex flex-col justify-center min-h-max'>
       {!inGame && (
         <Landing
           goToPokemonGuesser={goToPokemonGuesser}
@@ -40,7 +39,7 @@ const App = () => {
       {inDamageCalculator && (
         <DamageCalculator handleHeaderBack={returnToLanding} />
       )}
-    </MainContainer>
+    </div>
   );
 };
 

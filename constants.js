@@ -1,13 +1,3 @@
-export const theme = {
-  background: '#202020',
-  backgroundLight: '#515151',
-  accent: '#ebbed2',
-  accentHighlight: '#e2a2be',
-  cardsBackground: '#373737',
-  cardsBackgroundLoad: '#484848',
-  correct: '#83f1a7',
-};
-
 export const MAX_POKES = 898;
 
 export const MAX_TRIES_IF_ERROR = 5;
