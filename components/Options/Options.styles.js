@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-import { theme } from 'constants.js';
-
+export const Option = ({ children, ...props }) => (
+  <div className='flex justify-center align-center rounded-lg ' {...props}>
+    {...children}
+  </div>
+);
+/*
 export const Option = styled.div`
-  display: flex;
-  border-radius: 8px;
   min-height: 50px;
   margin: 10px;
   width: 100%;
@@ -12,8 +13,6 @@ export const Option = styled.div`
   color: ${theme.accent};
   border-width: 2px;
   border-style: solid;
-  align-items: center;
-  justify-content: center;
   ${(props) =>
     !props.validation
       ? `:hover {
@@ -29,10 +28,15 @@ export const Option = styled.div`
   font-size: 25px;
   ${(props) => (props.correct ? 'color: #83f1a7; border-color: #83f1a7' : '')}
   ${(props) => (props.incorrect ? 'color: #e74c3c; border-color: #e74c3c' : '')}
-`;
+`;*/
 
+export const OptionLoader = ({ children, ...props }) => (
+  <div className='flex' {...props}>
+    {...children}
+  </div>
+);
+/*
 export const OptionLoader = styled.div`
-  display: flex;
   border-radius: 8px;
   height: 50px;
   margin: 10px;
@@ -54,15 +58,12 @@ export const OptionLoader = styled.div`
   );
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite;
-`;
+`;*/
 
-export const OptionsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 39vh;
-  width: 80vw;
-  max-width: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export const OptionsContainer = ({ children, ...props }) => (
+  <div
+    className='flex flex-col h-[39vh] w-[80vw] max-w-[] justify-center align-center'
+    {...props}>
+    {...children}
+  </div>
+);

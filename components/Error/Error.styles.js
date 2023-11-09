@@ -1,12 +1,11 @@
-import styled from 'styled-components';
-import { theme } from 'constants.js';
+export const ErrorCard = ({ children, ...props }) => (
+  <div className='flex flex-col justify-center align-center p-5' {...props}>
+    {...children}
+  </div>
+);
 
+/*
 export const ErrorCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  padding: 20px;
   background-color: ${theme.cardsBackground};
   border-color: ${theme.accent};
   border-width: 2px;
@@ -17,11 +16,16 @@ export const ErrorCard = styled.div`
   color: ${theme.accent};
   font-weight: 800;
   font-size: 20px;
-`;
+`;*/
+
+export const ErrorContainer = ({ children, ...props }) => (
+  <div className='flex justify-center align-center' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const ErrorContainer = styled.div`
   height: 68%;
   max-width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+`;*/

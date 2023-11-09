@@ -1,11 +1,10 @@
-import styled from 'styled-components';
-import { theme } from 'constants.js';
-
+export const TypeCard = ({ children, ...props }) => (
+  <div className='flex flex-col content-center justify-center' {...props}>
+    {...children}
+  </div>
+);
+/*
 export const TypeCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
   flex: 1;
   padding: 10px;
   margin: 5px;
@@ -16,18 +15,36 @@ export const TypeCard = styled.div`
   border-radius: 50px;
   border-style: solid;
   align-items: center;
-`;
+`;*/
 
+export const TypesContainer = ({ children, ...props }) => (
+  <div className='flex align-center justify-center' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const TypesContainer = styled.div`
   height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`;*/
 
-export const TypeContainer = styled.div``;
+export const TypeContainer = ({ children, ...props }) => (
+  <div className='' {...props}>
+    {...children}
+  </div>
+);
 
+export const VSTitle = ({ children, ...props }) => (
+  <span className='' {...props}>
+    {...children}
+  </span>
+);
+
+/*
 export const VSTitle = styled.span`
   color: ${theme.accent};
   font-size: 20px;
-`;
+`;*/

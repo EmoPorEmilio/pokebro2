@@ -1,11 +1,13 @@
-import styled from 'styled-components';
-import { theme } from 'constants.js';
+import Image from 'next/image';
 
+export const YouLoseCard = ({ children, ...props }) => (
+  <div className='flex flex-col justify-center content-center ' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const YouLoseCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
   padding: 20px;
   background-color: ${theme.cardsBackground};
   border-color: ${theme.accent};
@@ -15,6 +17,15 @@ export const YouLoseCard = styled.div`
   width: 100%;
   margin: 50px;
 `;
+*/
+
+export const YouLoseContainer = ({ children, ...props }) => (
+  <div className='flex flex-col' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const YouLoseContainer = styled.div`
   height: 68%;
   max-width: 80%;
@@ -22,26 +33,46 @@ export const YouLoseContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: ${theme.accent};
-  flex-direction: column;
-`;
+`;*/
 
+export const YouLoseIMG = ({ children, ...props }) => (
+  <Image className='' {...props}>
+    {...children}
+  </Image>
+);
+
+/*
 export const YouLoseIMG = styled.img`
   position: absolute;
   max-width: 100%;
-`;
+`;*/
 
+export const CanvasToExport = ({ children, ...props }) => (
+  <canvas className='' {...props}>
+    {...children}
+  </canvas>
+);
+/*
 export const CanvasToExport = styled.canvas`
   position: absolute;
   display: none;
-`;
+`;*/
 
-export const UIButtons = styled.div`
-  display: flex;
-`;
+export const UIButtons = ({ children, ...props }) => (
+  <div className='flex' {...props}>
+    {...children}
+  </div>
+);
 
+export const UIButton = ({ children, ...props }) => (
+  <div className='flex' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const UIButton = styled.div`
   cursor: pointer;
-  display: flex;
   margin: 10px;
   padding: 10px;
   color: ${theme.accent};
@@ -55,4 +86,4 @@ export const UIButton = styled.div`
     background-color: ${theme.accent};
     color: ${theme.cardsBackground};
   }
-`;
+`;*/

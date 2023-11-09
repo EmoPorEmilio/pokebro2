@@ -1,11 +1,13 @@
-import styled from 'styled-components';
-import { theme } from 'constants.js';
+import Image from 'next/image';
 
+export const PokemonCard = ({ children, ...props }) => (
+  <div className='flex flex-col content-center justify-center' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const PokemonCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
   flex: 1;
   width: 200px;
   height: 200px;
@@ -15,13 +17,26 @@ export const PokemonCard = styled.div`
   border-radius: 20px;
   border-style: solid;
   align-items: center;
-`;
+`;*/
 
+export const PokemonContainer = ({ children, ...props }) => (
+  <div className='flex justify-center' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const PokemonContainer = styled.div`
   height: 40%;
-  display: flex;
-  justify-content: center;
-`;
+`;*/
+
+export const LoadingCard = ({ children, ...props }) => (
+  <div className='' {...props}>
+    {...children}
+  </div>
+);
+
+/*
 export const LoadingCard = styled.div`
   width: 100%;
   height: 100%;
@@ -40,8 +55,15 @@ export const LoadingCard = styled.div`
   );
   background-size: 200% 500%;
   animation: 1.5s shine linear infinite;
-`;
+`;*/
 
+/*
 export const PokemonIMG = styled.img`
   width: 100%;
-`;
+`;*/
+
+export const PokemonIMG = ({ children, ...props }) => (
+  <Image className='w' {...props}>
+    {...children}
+  </Image>
+);
