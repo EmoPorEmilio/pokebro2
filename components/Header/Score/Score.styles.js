@@ -52,7 +52,17 @@ export const ScorePoints = styled.div`
 `;*/
 
 export const HealthIcon = ({ children, ...props }) => (
-  <Image className='' {...props}>
+  <div className='w-[5vw] max-w-[50px]' {...props}>
+    {children}
+  </div>
+);
+
+export const HealthIconImg = ({ children, ...props }) => (
+  <Image
+    alt='health-icon'
+    fill={true}
+    className={` ${props.off ? 'opacity-20' : ''}}`}
+    {...props}>
     {children}
   </Image>
 );

@@ -63,7 +63,7 @@ export const PokemonIMG = styled.img`
 `;*/
 
 export const PokemonIMG = ({ children, ...props }) => (
-  <Image className='w' {...props}>
+  <Image fill={true} alt={'pokemon-img'} className='w' {...props}>
     {children}
   </Image>
 );

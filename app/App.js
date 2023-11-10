@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div className='bg-bg flex flex-col justify-center min-h-max'>
+    <div className='bg-bg flex flex-col justify-between min-h-[100dvh]'>
       {!inGame && (
         <Landing
           goToPokemonGuesser={goToPokemonGuesser}

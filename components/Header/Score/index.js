@@ -7,6 +7,7 @@ import {
   ArrowIcon,
   HealthContainer,
   Timer,
+  HealthIconImg,
 } from './Score.styles.js';
 
 const heartIcon = '/resources/heart-icon.png';
@@ -28,9 +29,15 @@ export const Score = ({ HP, scorePoints, handleHeaderBack, timer }) => {
       </ScorePoints>
       <HealthContainer>
         <HealthPoints>
-          <HealthIcon off={!(HP > 0)} src={heartIcon} />
-          <HealthIcon off={!(HP > 1)} src={heartIcon} />
-          <HealthIcon off={!(HP > 2)} src={heartIcon} />
+          <HealthIcon>
+            <HealthIconImg off={!(HP > 0)} src={heartIcon} />
+          </HealthIcon>
+          <HealthIcon>
+            <HealthIconImg off={!(HP > 1)} src={heartIcon} />
+          </HealthIcon>
+          <HealthIcon>
+            <HealthIconImg off={!(HP > 2)} src={heartIcon} />
+          </HealthIcon>
         </HealthPoints>
         <Timer>{timer}</Timer>
       </HealthContainer>

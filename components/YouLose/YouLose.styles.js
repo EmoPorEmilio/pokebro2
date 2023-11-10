@@ -36,7 +36,7 @@ export const YouLoseContainer = styled.div`
 `;*/
 
 export const YouLoseIMG = ({ children, ...props }) => (
-  <Image className='' {...props}>
+  <Image fill={true} alt='you lose pikachu' className='' {...props}>
     {children}
   </Image>
 );
