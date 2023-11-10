@@ -42,3 +42,13 @@ export const GAME_MODES = {
 };
 
 export const TIMER_INITIAL_VALUE = 100;
+
+export const theme = {
+  bg: '#202020',
+  ['bg-light']: '#515151',
+  accent: '#ebbed2',
+  ['accent-highlight']: '#e2a2be',
+  ['cards-bg']: '#373737',
+  ['cards-bg-load']: '#484848',
+  correct: '#83f1a7',
+};

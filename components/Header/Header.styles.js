@@ -1,6 +1,6 @@
-export const HeaderContainer = () => (
+export const HeaderContainer = ({ children, ...props }) => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

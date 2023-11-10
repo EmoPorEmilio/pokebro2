@@ -1,7 +1,7 @@
 import { Option } from 'components/Options/Options.styles.js';
-import { BodyContainer } from './../scenes.styles.js';
+import { BodyContainer } from 'app/scenes/scenes.styles.js';
 import { Header } from 'components/Header';
-import { Content } from 'app/App.styles.js';
+import { Content } from 'components/Content';
 import { GAME_MODES } from 'constants.js';
 
 export const Landing = ({

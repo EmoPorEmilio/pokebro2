@@ -1,6 +1,6 @@
 export const DamageContainer = ({ children, ...props }) => (
   <div className='flex justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

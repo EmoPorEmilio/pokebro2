@@ -1,6 +1,6 @@
 export const Option = ({ children, ...props }) => (
   <div className='flex justify-center align-center rounded-lg ' {...props}>
-    {...children}
+    {children}
   </div>
 );
 /*
@@ -32,7 +32,7 @@ export const Option = styled.div`
 
 export const OptionLoader = ({ children, ...props }) => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 /*
@@ -64,6 +64,6 @@ export const OptionsContainer = ({ children, ...props }) => (
   <div
     className='flex flex-col h-[39vh] w-[80vw] max-w-[] justify-center align-center'
     {...props}>
-    {...children}
+    {children}
   </div>
 );

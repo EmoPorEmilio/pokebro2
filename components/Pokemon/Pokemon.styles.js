@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const PokemonCard = ({ children, ...props }) => (
   <div className='flex flex-col content-center justify-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -21,7 +21,7 @@ export const PokemonCard = styled.div`
 
 export const PokemonContainer = ({ children, ...props }) => (
   <div className='flex justify-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -32,7 +32,7 @@ export const PokemonContainer = styled.div`
 
 export const LoadingCard = ({ children, ...props }) => (
   <div className='' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -64,6 +64,6 @@ export const PokemonIMG = styled.img`
 
 export const PokemonIMG = ({ children, ...props }) => (
   <Image className='w' {...props}>
-    {...children}
+    {children}
   </Image>
 );

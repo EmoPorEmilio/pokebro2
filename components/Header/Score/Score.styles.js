@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 export const BackArrow = ({ children, ...props }) => (
   <div className='flex flex-1 justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const ArrowIcon = ({ children, ...props }) => (
   <svg className='' {...props}>
-    {...children}
+    {children}
   </svg>
 );
 
@@ -25,19 +25,19 @@ export const ArrowIcon = styled.svg`
 
 export const ScoreContainer = ({ children, ...props }) => (
   <div className='flex flex-1 m-5' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const HealthPoints = ({ children, ...props }) => (
   <div className='flex flex-1 justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const ScorePoints = ({ children, ...props }) => (
   <div className='flex flex-1 justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -53,7 +53,7 @@ export const ScorePoints = styled.div`
 
 export const HealthIcon = ({ children, ...props }) => (
   <Image className='' {...props}>
-    {...children}
+    {children}
   </Image>
 );
 
@@ -66,13 +66,13 @@ export const HealthIcon = styled.img`
 
 export const HealthContainer = ({ children, ...props }) => (
   <div className='flex flex-1 flex-col' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const Timer = ({ children, ...props }) => (
   <div className='flex flex-1 justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

@@ -1,6 +1,6 @@
 export const ErrorCard = ({ children, ...props }) => (
   <div className='flex flex-col justify-center align-center p-5' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -20,7 +20,7 @@ export const ErrorCard = styled.div`
 
 export const ErrorContainer = ({ children, ...props }) => (
   <div className='flex justify-center align-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

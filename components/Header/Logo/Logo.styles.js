@@ -1,18 +1,13 @@
 import Image from 'next/image';
 
 export const LogoContainer = ({ children, ...props }) => (
-  <div className='flex flex-[2] m-5 align-center justify-center' {...props}>
-    {...children}
+  <div className='relative max-w-full max-h-full m-5' {...props}>
+    {children}
   </div>
 );
 
 export const LogoIMG = ({ children, ...props }) => (
-  <Image alt={props.alt} className='' {...props}>
-    {...children}
+  <Image alt={props.alt} fill={true} {...props}>
+    {children}
   </Image>
 );
-
-/*
-export const LogoIMG = styled.img`
-  max-width: 100%;
-`;*/

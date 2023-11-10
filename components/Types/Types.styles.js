@@ -1,6 +1,6 @@
 export const TypeCard = ({ children, ...props }) => (
   <div className='flex flex-col content-center justify-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 /*
@@ -19,7 +19,7 @@ export const TypeCard = styled.div`
 
 export const TypesContainer = ({ children, ...props }) => (
   <div className='flex align-center justify-center' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -33,13 +33,13 @@ export const TypesContainer = styled.div`
 
 export const TypeContainer = ({ children, ...props }) => (
   <div className='' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const VSTitle = ({ children, ...props }) => (
   <span className='' {...props}>
-    {...children}
+    {children}
   </span>
 );
 

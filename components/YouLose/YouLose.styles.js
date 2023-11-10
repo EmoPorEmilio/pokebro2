@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const YouLoseCard = ({ children, ...props }) => (
   <div className='flex flex-col justify-center content-center ' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -21,7 +21,7 @@ export const YouLoseCard = styled.div`
 
 export const YouLoseContainer = ({ children, ...props }) => (
   <div className='flex flex-col' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -37,7 +37,7 @@ export const YouLoseContainer = styled.div`
 
 export const YouLoseIMG = ({ children, ...props }) => (
   <Image className='' {...props}>
-    {...children}
+    {children}
   </Image>
 );
 
@@ -49,7 +49,7 @@ export const YouLoseIMG = styled.img`
 
 export const CanvasToExport = ({ children, ...props }) => (
   <canvas className='' {...props}>
-    {...children}
+    {children}
   </canvas>
 );
 /*
@@ -60,13 +60,13 @@ export const CanvasToExport = styled.canvas`
 
 export const UIButtons = ({ children, ...props }) => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
 export const UIButton = ({ children, ...props }) => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

@@ -1,5 +1,5 @@
 import { Header } from 'components/Header';
-import { Content } from 'app/App.styles.js';
+import { Content } from 'components/Content';
 import { useState, useEffect, useRef } from 'react';
 import {
   GAME_STATES,

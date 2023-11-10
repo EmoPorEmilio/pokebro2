@@ -1,9 +1,7 @@
 import { LogoContainer, LogoIMG } from './Logo.styles.js';
 
-export const Logo = () => {
-  return (
-    <LogoContainer>
-      <LogoIMG src='/resources/logo.png' />
-    </LogoContainer>
-  );
-};
+export const Logo = () => (
+  <LogoContainer>
+    <LogoIMG src='/resources/logo.png' />
+  </LogoContainer>
+);

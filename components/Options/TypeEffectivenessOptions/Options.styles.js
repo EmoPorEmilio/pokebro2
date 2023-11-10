@@ -1,6 +1,6 @@
 export const Option = () => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -37,7 +37,7 @@ export const Option = styled.div`
 
 export const OptionLoader = () => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 
@@ -69,7 +69,7 @@ export const OptionLoader = styled.div`
 
 export const OptionsContainer = () => (
   <div className='flex' {...props}>
-    {...children}
+    {children}
   </div>
 );
 

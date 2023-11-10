@@ -3,7 +3,7 @@ import { Options } from 'components/Options';
 import { YouLose } from 'components/YouLose';
 import { Error } from 'components/Error';
 import { Header } from 'components/Header';
-import { Content } from 'app/App.styles.js';
+import { Content } from 'components/Content';
 import { useEffect, useState, useRef } from 'react';
 import {
   generateRandomAvailablePokemonNumber,
