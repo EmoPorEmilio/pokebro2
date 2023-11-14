@@ -14,9 +14,11 @@ const config: Config = {
       ...defaultTheme.screens,
     },
     colors: {
+      background: '#3B5260',
+      ['dark-background']: '#1D272E',
       bg: '#202020',
       ['bg-light']: '#515151',
-      accent: '#ebbed2',
+      accent: '#DF5C9A',
       ['accent-highlight']: '#e2a2be',
       ['cards-bg']: '#373737',
       ['cards-bg-load']: '#484848',

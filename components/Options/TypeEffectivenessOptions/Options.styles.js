@@ -1,4 +1,4 @@
-export const Option = () => (
+export const Option = ({ children, ...props }) => (
   <div className='flex' {...props}>
     {children}
   </div>
@@ -35,7 +35,7 @@ export const Option = styled.div`
   ${(props) => (props.incorrect ? 'color: #e74c3c; border-color: #e74c3c' : '')}
 `;*/
 
-export const OptionLoader = () => (
+export const OptionLoader = ({ children, ...props }) => (
   <div className='flex' {...props}>
     {children}
   </div>
@@ -67,19 +67,10 @@ export const OptionLoader = styled.div`
   animation: 1.5s shine linear infinite;
 `;*/
 
-export const OptionsContainer = () => (
-  <div className='flex' {...props}>
+export const OptionsContainer = ({ children, ...props }) => (
+  <div
+    className='flex flex-col h-[39vh] w-[80vw] max-w-[350px] justify-center align-center'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const OptionsContainer = styled.div`
-  flex-direction: column;
-  height: 39vh;
-  width: 80vw;
-  max-width: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;*/

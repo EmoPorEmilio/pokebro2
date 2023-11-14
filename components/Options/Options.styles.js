@@ -49,7 +49,7 @@ export const OptionLoader = styled.div`
 
 export const OptionsContainer = ({ children, ...props }) => (
   <div
-    className='flex flex-col h-[39vh] w-[80vw] max-w-[] justify-center align-center'
+    className='flex flex-col h-[39vh] w-[80vw] max-w-[350px] justify-center align-center'
     {...props}>
     {children}
   </div>
