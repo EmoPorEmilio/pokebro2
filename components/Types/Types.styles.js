@@ -1,5 +1,7 @@
 export const TypeCard = ({ children, ...props }) => (
-  <div className='flex flex-col content-center justify-center' {...props}>
+  <div
+    className={`flex flex-1 p-2 m-1 flex-col content-center justify-center`}
+    {...props}>
     {children}
   </div>
 );
@@ -18,18 +20,12 @@ export const TypeCard = styled.div`
 `;*/
 
 export const TypesContainer = ({ children, ...props }) => (
-  <div className='flex align-center justify-center' {...props}>
+  <div
+    className='flex h-2/5 align-center justify-center items-center'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const TypesContainer = styled.div`
-  height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;*/
 
 export const TypeContainer = ({ children, ...props }) => (
   <div className='' {...props}>
@@ -38,13 +34,7 @@ export const TypeContainer = ({ children, ...props }) => (
 );
 
 export const VSTitle = ({ children, ...props }) => (
-  <span className='' {...props}>
+  <span className='text-accent text-lg' {...props}>
     {children}
   </span>
 );
-
-/*
-export const VSTitle = styled.span`
-  color: ${theme.accent};
-  font-size: 20px;
-`;*/

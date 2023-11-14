@@ -40,13 +40,8 @@ export const LoadingCard = styled.div`
   animation: 1.5s shine linear infinite;
 `;*/
 
-/*
-export const PokemonIMG = styled.img`
-  width: 100%;
-`;*/
-
 export const PokemonIMG = ({ children, ...props }) => (
-  <Image fill={true} alt={'pokemon-img'} className='w' {...props}>
+  <Image fill={true} alt={'pokemon-img'} className='w-full' {...props}>
     {children}
   </Image>
 );
