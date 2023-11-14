@@ -1,12 +1,7 @@
 export const HeaderContainer = ({ children, ...props }) => (
-  <div className='flex' {...props}>
+  <div
+    className='flex flex-row border-b-2 border-solid border-accent h-1/5'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const HeaderContainer = styled.div`
-  flex-direction: row;
-  border-bottom: 2px solid ${theme.accent};
-  height: 20%;
-`;*/

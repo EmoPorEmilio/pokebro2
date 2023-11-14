@@ -7,21 +7,12 @@ export const BackArrow = ({ children, ...props }) => (
 );
 
 export const ArrowIcon = ({ children, ...props }) => (
-  <svg className='' {...props}>
+  <svg
+    className='w-auto h-full fill-accent hover:cursor-pointer hover:fill-bg-light'
+    {...props}>
     {children}
   </svg>
 );
-
-/*
-export const ArrowIcon = styled.svg`
-  width: auto;
-  height: 100%;
-  fill: ${theme.accent};
-  :hover {
-    cursor: pointer;
-    fill: ${theme.backgroundLight};
-  }
-`;*/
 
 export const ScoreContainer = ({ children, ...props }) => (
   <div className='flex flex-1 m-5' {...props}>
@@ -36,20 +27,12 @@ export const HealthPoints = ({ children, ...props }) => (
 );
 
 export const ScorePoints = ({ children, ...props }) => (
-  <div className='flex flex-1 justify-center align-center' {...props}>
+  <div
+    className='flex flex-1 justify-center align-center text-[10vw] md:text-[100px] font-light text-accent'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const ScorePoints = styled.div`
-  color: ${theme.accent};
-  font-size: 10vw;
-  @media screen and (min-width: 900px) {
-    font-size: 100px;
-  }
-  font-weight: 300;
-`;*/
 
 export const HealthIcon = ({ children, ...props }) => (
   <div className='w-[5vw] max-w-[50px]' {...props}>
@@ -61,18 +44,11 @@ export const HealthIconImg = ({ children, ...props }) => (
   <Image
     alt='health-icon'
     fill={true}
-    className={` ${props.off ? 'opacity-20' : ''}}`}
+    className={`w-[5vw] max-w[50px] ${props.off ? 'opacity-20' : ''}}`}
     {...props}>
     {children}
   </Image>
 );
-
-/*
-export const HealthIcon = styled.img`
-  width: 5vw;
-  max-width: 50px;
-  ${(props) => (props.off ? 'opacity: 0.2' : '')}
-`;*/
 
 export const HealthContainer = ({ children, ...props }) => (
   <div className='flex flex-1 flex-col' {...props}>
@@ -81,18 +57,9 @@ export const HealthContainer = ({ children, ...props }) => (
 );
 
 export const Timer = ({ children, ...props }) => (
-  <div className='flex flex-1 justify-center align-center' {...props}>
+  <div
+    className='flex flex-1 justify-center align-center text-accent text-[5vw] md:text-5xl font-light'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const Timer = styled.div`
-  color: ${theme.accent};
-  font-size: 5vw;
-  @media screen and (min-width: 900px) {
-    font-size: 50px;
-  }
-  font-weight: 300;
-`;
-*/

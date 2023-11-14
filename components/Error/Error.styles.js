@@ -1,31 +1,15 @@
 export const ErrorCard = ({ children, ...props }) => (
-  <div className='flex flex-col justify-center align-center p-5' {...props}>
+  <div
+    className='w-full m-[50px] text-accent font-extrabold text-xl border-solid flex flex-col justify-center align-center p-5 bg-cards-bg border-accent border-2 rounded-2xl '
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const ErrorCard = styled.div`
-  background-color: ${theme.cardsBackground};
-  border-color: ${theme.accent};
-  border-width: 2px;
-  border-radius: 20px;
-  border-style: solid;
-  width: 100%;
-  margin: 50px;
-  color: ${theme.accent};
-  font-weight: 800;
-  font-size: 20px;
-`;*/
 
 export const ErrorContainer = ({ children, ...props }) => (
-  <div className='flex justify-center align-center' {...props}>
+  <div
+    className='flex justify-center align-center h-4/6 max-w-[80%]'
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const ErrorContainer = styled.div`
-  height: 68%;
-  max-width: 80%;
-`;*/

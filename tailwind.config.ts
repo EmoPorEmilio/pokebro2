@@ -9,6 +9,7 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      xxs: '320px',
       xs: '475px',
       ...defaultTheme.screens,
     },
