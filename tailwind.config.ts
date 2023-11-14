@@ -21,6 +21,7 @@ const config: Config = {
       ['cards-bg']: '#373737',
       ['cards-bg-load']: '#484848',
       correct: '#83f1a7',
+      incorrect: '#e74c3c',
     },
   },
   plugins: [],

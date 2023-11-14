@@ -1,46 +1,29 @@
 import Image from 'next/image';
 
 export const PokemonCard = ({ children, ...props }) => (
-  <div className='flex flex-col content-center justify-center' {...props}>
+  <div
+    className='flex flex-col content-center items-center justify-center flex-1 w-[200px] h-[200px] bg-cards-bg border-accent rounded-2xl border-solid '
+    {...props}>
     {children}
   </div>
 );
-
-/*
-export const PokemonCard = styled.div`
-  flex: 1;
-  width: 200px;
-  height: 200px;
-  background-color: ${theme.cardsBackground};
-  border-color: ${theme.accent};
-  border-width: 2px;
-  border-radius: 20px;
-  border-style: solid;
-  align-items: center;
-`;*/
 
 export const PokemonContainer = ({ children, ...props }) => (
-  <div className='flex justify-center' {...props}>
+  <div className='flex justify-center h-2/5' {...props}>
     {children}
   </div>
 );
 
-/*
-export const PokemonContainer = styled.div`
-  height: 40%;
-`;*/
-
 export const LoadingCard = ({ children, ...props }) => (
-  <div className='' {...props}>
+  <div
+    className='w-full h-full rounded-2xl animate-pulse bg-bg-light'
+    {...props}>
     {children}
   </div>
 );
 
 /*
 export const LoadingCard = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
   @keyframes shine {
     to {
       background-position-x: -200%;

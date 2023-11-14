@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { OptionsContainer, Option, OptionLoader } from './Options.styles.js';
+import { OptionsContainer, Option } from './Options.styles.js';
 
 export const TypeEffectivenessOptions = ({
   correctOption,

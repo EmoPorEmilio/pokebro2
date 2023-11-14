@@ -1,49 +1,28 @@
 export const Option = ({ children, ...props }) => (
-  <div className='flex justify-center align-center rounded-lg ' {...props}>
+  <div
+    className={`${props.correct ? 'text-correct border-correct' : ''} 
+    ${props.incorrect ? 'text-incorrect border-incorrect' : ''} 
+    ${
+      !props.validation
+        ? 'hover:pointer hover:bg-accent hover:border-[#fff] text-cards-bg'
+        : ''
+    }
+    flex justify-center align-center rounded-lg min-h-[50px] 
+    m-2 w-full bg-cards-bg border-accent border-2 border-solid text-accent text-center font-normal text-2xl`}
+    {...props}>
     {children}
   </div>
 );
-/*
-export const Option = styled.div`
-  min-height: 50px;
-  margin: 10px;
-  width: 100%;
-  background-color: ${theme.cardsBackground};
-  border-color: ${theme.accent};
-  color: ${theme.accent};
-  border-width: 2px;
-  border-style: solid;
-  ${(props) =>
-    !props.validation
-      ? `:hover {
-    cursor: pointer;
-    background-color: ${theme.accent};
-    border-color: #fff;
-    color: ${theme.cardsBackground};
-  }`
-      : ''}}
-  
-  font-weight: 400;
-  text-align: center;
-  font-size: 25px;
-  ${(props) => (props.correct ? 'color: #83f1a7; border-color: #83f1a7' : '')}
-  ${(props) => (props.incorrect ? 'color: #e74c3c; border-color: #e74c3c' : '')}
-`;*/
 
 export const OptionLoader = ({ children, ...props }) => (
-  <div className='flex' {...props}>
+  <div
+    className='flex animate-pulse rounded-lg h-12 m-2 w-full border-accent border-2 border-solid @keyframes shine {'
+    {...props}>
     {children}
   </div>
 );
 /*
 export const OptionLoader = styled.div`
-  border-radius: 8px;
-  height: 50px;
-  margin: 10px;
-  width: 100%;
-  border-color: ${theme.accent};
-  border-width: 2px;
-  border-style: solid;
   @keyframes shine {
     to {
       background-position-x: -200%;
