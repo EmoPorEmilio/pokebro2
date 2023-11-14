@@ -35,7 +35,7 @@ export const ScorePoints = ({ children, ...props }) => (
 );
 
 export const HealthIcon = ({ children, ...props }) => (
-  <div className='w-[5vw] max-w-[50px]' {...props}>
+  <div className='relative w-[5vw] max-w-[50px]' {...props}>
     {children}
   </div>
 );

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const PokemonCard = ({ children, ...props }) => (
   <div
-    className='flex flex-col content-center items-center justify-center flex-1 w-[200px] h-[200px] bg-cards-bg border-accent rounded-2xl border-solid '
+    className='relative flex-col content-center items-center justify-center flex-1 w-[200px] h-[200px] bg-cards-bg border-accent rounded-2xl border-solid '
     {...props}>
     {children}
   </div>

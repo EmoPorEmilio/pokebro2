@@ -15,7 +15,7 @@ export const Option = ({ children, ...props }) => {
     <div
       className={`${conditionalStyle}
     flex justify-center align-center rounded-lg min-h-[50px] 
-    m-2 w-full bg-cards-bg border-accent border-2 border-solid text-accent text-center font-normal text-2xl`}
+    m-2 w-full bg-cards-bg border-accent-highlight border-[1px] border-solid text-accent text-center font-normal text-2xl`}
       {...props}>
       {children}
     </div>
@@ -24,7 +24,7 @@ export const Option = ({ children, ...props }) => {
 
 export const OptionLoader = ({ children, ...props }) => (
   <div
-    className='flex animate-pulse rounded-lg h-12 m-2 w-full border-accent border-2 border-solid @keyframes shine {'
+    className='flex animate-pulse rounded-lg h-12 m-2 w-full border-accent border-1 border-solid @keyframes shine {'
     {...props}>
     {children}
   </div>
