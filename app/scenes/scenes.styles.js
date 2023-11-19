@@ -1,5 +1,5 @@
 export const BodyContainer = ({ children, ...props }) => (
-  <div className='flex flex-col w-[80vw] max-w-[500px]' {...props}>
+  <div className='flex flex-col' {...props}>
     {children}
   </div>
 );

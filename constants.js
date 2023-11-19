@@ -41,7 +41,7 @@ export const GAME_MODES = {
   POKEMON_GUESSER: '¿QUIÉN ES ESE POKÉMON?',
 };
 
-export const TIMER_INITIAL_VALUE = 100;
+export const TIMER_INITIAL_VALUE = 10000000000000;
 
 export const theme = {
   bg: '#202020',

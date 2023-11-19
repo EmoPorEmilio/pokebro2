@@ -1,6 +1,6 @@
 export const Content = ({ ...props }) => (
   <div
-    className='flex-1 justify-center content-center items-center flex-col'
+    className='flex flex-1 justify-center items-center flex-col'
     {...props}
   />
 );

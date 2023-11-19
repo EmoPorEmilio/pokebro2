@@ -3,7 +3,7 @@ export const types = [
     id: 1,
     name: 'normal',
     printName: 'NORMAL',
-    color: '#A8A878',
+    color: 'bg-[#A8A878]',
     damage_relations: {
       double_damage_from: [
         {
@@ -41,7 +41,7 @@ export const types = [
     id: 2,
     name: 'fighting',
     printName: 'LUCHA',
-    color: '#C03028',
+    color: 'bg-[#C03028]',
     damage_relations: {
       double_damage_from: [
         {
@@ -128,7 +128,7 @@ export const types = [
     id: 3,
     name: 'flying',
     printName: 'VOLADOR',
-    color: '#a890f0',
+    color: 'bg-[#a890f0]',
     damage_relations: {
       double_damage_from: [
         {
@@ -199,7 +199,7 @@ export const types = [
     id: 4,
     name: 'poison',
     printName: 'VENENO',
-    color: '#a040a0',
+    color: 'bg-[#a040a0]',
     damage_relations: {
       double_damage_from: [
         {
@@ -274,7 +274,7 @@ export const types = [
     id: 5,
     name: 'ground',
     printName: 'TIERRA',
-    color: '#e0c068',
+    color: 'bg-[#e0c068]',
     damage_relations: {
       double_damage_from: [
         {
@@ -350,7 +350,7 @@ export const types = [
     id: 6,
     name: 'rock',
     printName: 'ROCA',
-    color: '#b8a038',
+    color: 'bg-[#b8a038]',
     damage_relations: {
       double_damage_from: [
         {
@@ -432,7 +432,7 @@ export const types = [
     id: 7,
     name: 'bug',
     printName: 'BICHO',
-    color: '#a8b820',
+    color: 'bg-[#a8b820]',
     damage_relations: {
       double_damage_from: [
         {
@@ -514,7 +514,7 @@ export const types = [
     id: 8,
     name: 'ghost',
     printName: 'FANTASMA',
-    color: '#705898',
+    color: 'bg-[#705898]',
     damage_relations: {
       double_damage_from: [
         {
@@ -574,7 +574,7 @@ export const types = [
     id: 9,
     name: 'steel',
     printName: 'ACERO',
-    color: '#b8b8d0',
+    color: 'bg-[#b8b8d0]',
     damage_relations: {
       double_damage_from: [
         {
@@ -677,7 +677,7 @@ export const types = [
     id: 10,
     name: 'fire',
     printName: 'FUEGO',
-    color: '#f08030',
+    color: 'bg-[#f08030]',
     damage_relations: {
       double_damage_from: [
         {
@@ -763,7 +763,7 @@ export const types = [
     id: 11,
     name: 'water',
     printName: 'AGUA',
-    color: '#6890f0',
+    color: 'bg-[#6890f0]',
     damage_relations: {
       double_damage_from: [
         {
@@ -829,7 +829,7 @@ export const types = [
     id: 12,
     name: 'grass',
     printName: 'PLANTA',
-    color: '#78c850',
+    color: 'bg-[#78c850]',
     damage_relations: {
       double_damage_from: [
         {
@@ -923,7 +923,7 @@ export const types = [
     id: 13,
     name: 'electric',
     printName: 'ELÉCTRICO',
-    color: '#f8d030',
+    color: 'bg-[#f8d030]',
     damage_relations: {
       double_damage_from: [
         {
@@ -982,7 +982,7 @@ export const types = [
     id: 14,
     name: 'psychic',
     printName: 'PSÍQUICO',
-    color: '#f85888',
+    color: 'bg-[#f85888]',
     damage_relations: {
       double_damage_from: [
         {
@@ -1041,7 +1041,7 @@ export const types = [
     id: 15,
     name: 'ice',
     printName: 'HIELO',
-    color: '#98d8d8',
+    color: 'bg-[#98d8d8]',
     damage_relations: {
       double_damage_from: [
         {
@@ -1111,7 +1111,7 @@ export const types = [
     id: 16,
     name: 'dragon',
     printName: 'DRAGÓN',
-    color: '#7038f8',
+    color: 'bg-[#7038f8]',
     damage_relations: {
       double_damage_from: [
         {
@@ -1170,7 +1170,7 @@ export const types = [
     id: 17,
     name: 'dark',
     printName: 'SINIESTRO',
-    color: '#705848',
+    color: 'bg-[#705848]',
     damage_relations: {
       double_damage_from: [
         {
@@ -1233,7 +1233,7 @@ export const types = [
     id: 18,
     name: 'fairy',
     printName: 'HADA',
-    color: '#ee99ac',
+    color: 'bg-[#ee99ac]',
     damage_relations: {
       double_damage_from: [
         {

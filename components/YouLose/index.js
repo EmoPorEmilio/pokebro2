@@ -43,7 +43,7 @@ export const YouLose = ({ restartGame, scorePoints, difficulty, gameMode }) => {
   };
 
   const drawGameMode = (canvas, context) => {
-    context.fillStyle = theme.accentHighlight;
+    context.fillStyle = theme['accent-highlight'];
     context.strokeStyle = shareStrokeColor;
     context.font = 'normal 800 29px Jost';
     context.textAlign = 'center';
@@ -52,7 +52,7 @@ export const YouLose = ({ restartGame, scorePoints, difficulty, gameMode }) => {
   };
 
   const drawDifficulty = (canvas, context) => {
-    context.fillStyle = theme.accentHighlight;
+    context.fillStyle = theme['accent-highlight'];
     context.strokeStyle = shareStrokeColor;
     context.font = 'normal 800 29px Jost';
     context.textAlign = 'center';

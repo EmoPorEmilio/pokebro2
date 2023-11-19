@@ -2,14 +2,14 @@ import Image from 'next/image';
 
 export const PokemonCard = ({ children, ...props }) => (
   <div
-    className='relative flex-col content-center items-center justify-center flex-1 w-[200px] h-[200px] bg-cards-bg border-accent rounded-2xl border-solid '
+    className='relative flex-col content-center items-center justify-center flex-1 w-[200px] h-[200px] bg-cards-bg border-2 border-accent rounded-2xl border-solid '
     {...props}>
     {children}
   </div>
 );
 
 export const PokemonContainer = ({ children, ...props }) => (
-  <div className='flex justify-center h-2/5' {...props}>
+  <div className='flex justify-center h-2/5  ' {...props}>
     {children}
   </div>
 );
@@ -17,6 +17,8 @@ export const PokemonContainer = ({ children, ...props }) => (
 export const LoadingCard = ({ children, ...props }) => (
   <div
     className='w-full h-full rounded-2xl animate-pulse bg-bg-light'
+    border-accent
+    border-2
     {...props}>
     {children}
   </div>
