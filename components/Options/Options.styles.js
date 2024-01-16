@@ -15,7 +15,7 @@ export const Option = ({ children, ...props }) => {
     <div
       className={`${conditionalStyle}
     flex justify-center align-center rounded-lg min-h-[50px] 
-    m-2 w-full bg-cards-bg border-accent-highlight border-[1px] border-solid text-accent text-center font-normal text-2xl`}
+    m-2 w-full bg-cards-bg border-accent-200 border-[1px] border-solid text-accent text-center font-normal text-2xl`}
       {...props}>
       {children}
     </div>

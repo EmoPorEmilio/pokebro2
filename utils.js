@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { types } from 'data/types';
 import { TYPE_EFFECTIVENESS_OPTION } from 'constants.js';
 
@@ -40,12 +39,12 @@ export const correctCapitalLetter = (name) =>
   name.charAt(0).toUpperCase() + name.slice(1);
 
 export const fetchPokemonImage = async (number) =>
-  axios.get(pokemonIMGURL(number), {
+  fetch(pokemonIMGURL(number), {
     responseType: 'blob',
   });
 
 export const fetchPokemonInfo = async (pokemonNumber) =>
-  axios.get(PokemonInfoURL(pokemonNumber), {
+  fet(PokemonInfoURL(pokemonNumber), {
     responseType: 'json',
   });
 
