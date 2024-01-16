@@ -5,7 +5,7 @@ import './globals.css';
 const jost = Jost({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: `Slowpoke's Land`,
+  title: `PokéBro 2`,
   description: 'WebApp de Juegos Pokémon',
 };
 

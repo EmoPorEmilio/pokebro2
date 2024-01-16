@@ -1,5 +1,5 @@
 {
-  "name": "slowpokeland",
+  "name": "pokebro2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@upstash/redis": "^1.24.3",
-    "axios": "^1.6.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18"
