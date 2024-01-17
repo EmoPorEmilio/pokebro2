@@ -55,7 +55,7 @@ export default function Mobile() {
           </div>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charmander
+              Charizard
             </span>
           </div>
         </div>
