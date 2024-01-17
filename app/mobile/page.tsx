@@ -21,7 +21,19 @@ export default function Mobile() {
           </div>
         </div>
       </nav>
-      <main className='flex flex-1 bg-bg-100 rounded-xl border-y-2 border-accent-500'></main>
+      <main className='flex flex-1 flex-col w-full bg-bg-100 rounded-xl border-y-2 border-accent-500'>
+        <div className='flex flex-col w-full h-full p-10 justify-center items-center'>
+          <div className='flex flex-col w-[210px] h-[210px] items-center justify-center rounded-xl border border-primary-600 border-b-accent-500 bg-bg-300 bg-bg-400 '>
+            <Image
+              src='/resources/Bulbasaur.png'
+              width='210'
+              height='210'
+              alt='bulbasaur sprite'
+            />
+          </div>
+        </div>
+        <div className='flex flex-col w-full h-full'>test</div>
+      </main>
       <nav className='h-14 w-full'>
         <div className='flex w-full mx-auto h-full items-center justify-between px-8'>
           <MdHome color='#FFB2D7' size='36px' />

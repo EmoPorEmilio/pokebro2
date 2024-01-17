@@ -44,7 +44,7 @@ export const fetchPokemonImage = async (number) =>
   });
 
 export const fetchPokemonInfo = async (pokemonNumber) =>
-  fet(PokemonInfoURL(pokemonNumber), {
+  fetch(PokemonInfoURL(pokemonNumber), {
     responseType: 'json',
   });
 
