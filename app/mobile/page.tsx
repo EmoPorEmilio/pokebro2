@@ -10,7 +10,7 @@ export const runtime = 'edge';
 
 export default function Mobile() {
   return (
-    <div className='flex flex-col h-[100dvh] w-[100dvw] bg-bg-400'>
+    <div className='flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased'>
       <nav className='h-14 w-full'>
         <div className='px-4 flex w-full mx-auto h-full items-center justify-between'>
           <div className=''>
@@ -33,27 +33,27 @@ export default function Mobile() {
           </div>
         </div>
         <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-50 bg-primary-700 '>
+          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-lg text-primary-300`}>
               Charmander
             </span>
           </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-50 bg-primary-700 '>
+          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-lg text-primary-300`}>
               Charmander
             </span>
           </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-50 bg-primary-700 '>
+          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-lg text-primary-300`}>
               Charmander
             </span>
           </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-50 bg-primary-700 '>
+          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-lg text-primary-300`}>
               Charmander
             </span>
           </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-50 bg-primary-700 '>
+          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
             <span className={`${sen.className} text-lg text-primary-300`}>
               Charmander
             </span>
