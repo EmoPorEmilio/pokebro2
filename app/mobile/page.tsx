@@ -34,27 +34,27 @@ export default function Mobile() {
         </div>
         <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-lg text-primary-300`}>
+            <span className={`${sen.className} text-2xl text-primary-300`}>
               Charmander
             </span>
           </div>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-lg text-primary-300`}>
+            <span className={`${sen.className} text-2xl text-primary-300`}>
               Charmander
             </span>
           </div>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-lg text-primary-300`}>
+            <span className={`${sen.className} text-2xl text-primary-300`}>
               Charmander
             </span>
           </div>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-lg text-primary-300`}>
+            <span className={`${sen.className} text-2xl text-primary-300`}>
               Charmander
             </span>
           </div>
           <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-lg text-primary-300`}>
+            <span className={`${sen.className} text-2xl text-primary-300`}>
               Charmander
             </span>
           </div>
