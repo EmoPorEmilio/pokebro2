@@ -36,6 +36,7 @@ const config: Config = {
         'primary-100': '#D9F2FF',
         'primary-200': '#D0E9F5',
         'primary-300': '#ADCCDC',
+        'primary-400': '#B8DFFF',
         'primary-500': '#75ABC7',
         'primary-600': '#58748B',
         'primary-700': '#4F6D85',
