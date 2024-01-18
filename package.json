@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lucia-auth/adapter-sqlite": "^2.0.1",
+    "lucia": "^2.7.6",
     "next": "14.0.1",
-    "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1"
