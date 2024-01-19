@@ -1,6 +1,6 @@
 import { lucia } from 'lucia';
 import { nextjs_future } from 'lucia/middleware';
-import { d1 } from '@lucia-auth/adapter-sqlite';
+/*import { d1 } from '@lucia-auth/adapter-sqlite';
 
 const d1: (
   database: D1Database,
@@ -21,3 +21,4 @@ export const auth = lucia({
 });
 
 export type Auth = typeof auth;
+*/
