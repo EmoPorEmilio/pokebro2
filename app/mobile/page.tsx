@@ -24,6 +24,12 @@ export default function Mobile() {
       return 'text-success-400';
     }
   };
+  const navBorderColor = () => {
+    return `bg-gradient-to-r 
+from-accent-500 
+to-success-400
+animate-gradient-x`;
+  };
   return (
     <div className='flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased'>
       <nav className='h-14 w-full'>
@@ -39,48 +45,51 @@ export default function Mobile() {
           </div>
         </div>
       </nav>
-      <main className='flex flex-1 flex-col w-full bg-bg-100 rounded-xl border-y-2 border-accent-500'>
-        <div className='flex flex-col w-full pt-10 pb-5  px-10  justify-center items-center'>
-          <div className='flex flex-colw-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent-500 bg-bg-300 '>
-            <Image
-              src='/resources/Bulbasaur.png'
-              width='210'
-              height='210'
-              alt='bulbasaur sprite'
-            />
+      <main
+        className={`flex flex-1 flex-col w-full ${navBorderColor()} rounded-xl py-[2px]`}>
+        <div className='flex flex-1 flex-col w-full bg-bg-100 rounded-xl'>
+          <div className='flex flex-col w-full pt-10 pb-5  px-10  justify-center items-center'>
+            <div className='flex flex-colw-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent-500 bg-bg-300 '>
+              <Image
+                src='/resources/Bulbasaur.png'
+                width='210'
+                height='210'
+                alt='bulbasaur sprite'
+              />
+            </div>
           </div>
-        </div>
-        <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
-          <div className='absolute left-10'>
-            <MdOutlineStar color='#FFDD87' size='18px' />
-          </div>
-          <div className='absolute right-10'>
-            <MdOutlineStar color='#FFDD87' size='18px' />
-          </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charmander
-            </span>
-          </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charmander
-            </span>
-          </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charmander
-            </span>
-          </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charmander
-            </span>
-          </div>
-          <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
-            <span className={`${sen.className} text-2xl text-primary-300`}>
-              Charizard
-            </span>
+          <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
+            <div className='absolute left-10'>
+              <MdOutlineStar color='#FFDD87' size='18px' />
+            </div>
+            <div className='absolute right-10'>
+              <MdOutlineStar color='#FFDD87' size='18px' />
+            </div>
+            <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
+              <span className={`${sen.className} text-2xl text-primary-300`}>
+                Charmander
+              </span>
+            </div>
+            <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
+              <span className={`${sen.className} text-2xl text-primary-300`}>
+                Charmander
+              </span>
+            </div>
+            <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
+              <span className={`${sen.className} text-2xl text-primary-300`}>
+                Charmander
+              </span>
+            </div>
+            <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
+              <span className={`${sen.className} text-2xl text-primary-300`}>
+                Charmander
+              </span>
+            </div>
+            <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
+              <span className={`${sen.className} text-2xl text-primary-300`}>
+                Charizard
+              </span>
+            </div>
           </div>
         </div>
       </main>

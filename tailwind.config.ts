@@ -55,6 +55,21 @@ const config: Config = {
         correct: '#83f1a7',
         incorrect: '#e74c3c',
       },
+      animation: {
+        'gradient-x': 'gradient-x 3s ease infinite',
+      },
+      keyframes: {
+        'gradient-x': {
+          '0%, 100%': {
+            'background-size': '500% 100%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '500% 100%',
+            'background-position': 'right center',
+          },
+        },
+      },
     },
   },
   safelist: [
