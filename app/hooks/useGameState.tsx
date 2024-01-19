@@ -11,6 +11,8 @@ enum GameAction {
 }
 
 const reducer = (state: GameState, action: GameAction) => {
+  return state;
+  /*
   switch (action) {
     case 'COMPLETE':
       return state.map((todo) => {
@@ -22,7 +24,7 @@ const reducer = (state: GameState, action: GameAction) => {
       });
     default:
       return state;
-  }
+  }*/
 };
 
 const useGameState = () => {
