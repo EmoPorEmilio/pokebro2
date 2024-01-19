@@ -49,7 +49,7 @@ animate-gradient-x`;
         className={`flex flex-1 flex-col w-full ${navBorderColor()} rounded-xl py-[2px]`}>
         <div className='flex flex-1 flex-col w-full bg-bg-100 rounded-xl'>
           <div className='flex flex-col w-full pt-10 pb-5  px-10  justify-center items-center'>
-            <div className='flex flex-colw-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent-500 bg-bg-300 '>
+            <div className='flex flex-col w-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent-500 bg-bg-300 '>
               <Image
                 src='/resources/Bulbasaur.png'
                 width='210'
