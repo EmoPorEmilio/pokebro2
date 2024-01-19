@@ -9,6 +9,17 @@ import { sen } from '@/app/fonts';
 export const runtime = 'edge';
 
 export default function Mobile() {
+  let currentScore = 80;
+  let maxScore = 100;
+  let scoreColor = () => {
+    if (currentScore / maxScore < 0.3) {
+      return 'text-danger-400';
+    } else if (currentScore / maxScore < 0.7) {
+      return 'text-warning-400';
+    } else {
+      return 'text-success-400';
+    }
+  };
   return (
     <div className='flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased'>
       <nav className='h-14 w-full'>
@@ -16,8 +27,11 @@ export default function Mobile() {
           <div className=''>
             <Image src='/logo.png' width='41' height='41' alt='logo' />
           </div>
-          <div className=''>
-            <MdMenu color='#FFB2D7' size='36px' />
+          <div className='flex justify-center'>
+            <span className='block text-2xl text-accent-300 '>
+              <span className={`${scoreColor()}`}>{currentScore}</span>/
+              {maxScore}
+            </span>
           </div>
         </div>
       </nav>
@@ -62,9 +76,9 @@ export default function Mobile() {
       </main>
       <nav className='h-14 w-full'>
         <div className='flex w-full mx-auto h-full items-center justify-between px-8'>
-          <MdHome color='#FFB2D7' size='36px' />
+          <MdHome color='#4C6477' size='36px' />
           <MdVideogameAsset color='#FFB2D7' size='36px' />
-          <MdAccountCircle color='#FFB2D7' size='36px' />
+          <MdAccountCircle color='#4C6477' size='36px' />
         </div>
       </nav>
     </div>
