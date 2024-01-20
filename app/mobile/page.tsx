@@ -34,7 +34,7 @@ animate-gradient-x`;
       <nav className='h-14 w-full'>
         <div className='px-4 flex w-full mx-auto h-full items-center justify-between'>
           <div className=''>
-            <Image src='/logo.png' width='41' height='41' alt='logo' />
+            <img src='/logo.png' width='41' height='41' alt='logo' />
           </div>
           <div className='flex justify-center'>
             <span className='block text-2xl text-accent-300 '>
@@ -117,7 +117,7 @@ animate-gradient-x`;
       <nav className='h-14 w-full'>
         <div className='flex w-full mx-auto h-full items-center justify-between px-8'>
           <MdHome color='#4C6477' size='36px' />
-          <MdVideogameAsset color='#FFB2D7' size='36px' />
+          <MdVideogameAsset color='#B8DFFF' size='36px' />
           <MdAccountCircle color='#4C6477' size='36px' />
         </div>
       </nav>
