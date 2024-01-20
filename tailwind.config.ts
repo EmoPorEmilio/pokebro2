@@ -56,6 +56,8 @@ const config: Config = {
         incorrect: '#e74c3c',
       },
       animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        'star-victory': 'star-victory 1s ease-in-out infinite',
         'gradient-x': 'gradient-x 3s ease infinite',
       },
       keyframes: {
@@ -65,8 +67,22 @@ const config: Config = {
             'background-position': 'left center',
           },
           '50%': {
-            'background-size': '500% 100%',
+            'background-size': '100% 100%',
             'background-position': 'right center',
+          },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        'star-victory': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.2)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(2)',
           },
         },
       },

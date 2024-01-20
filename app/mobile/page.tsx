@@ -60,10 +60,32 @@ animate-gradient-x`;
           </div>
           <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
             <div className='absolute left-10'>
-              <MdOutlineStar color='#FFDD87' size='18px' />
+              <MdOutlineStar
+                className='animate-star-victory'
+                color='#FFDD87'
+                size='18px'
+              />
+            </div>
+            <div className='absolute left-7'>
+              <MdOutlineStar
+                className='animate-star-victory'
+                color='#FFDD87'
+                size='18px'
+              />
+            </div>
+            <div className='absolute left-0'>
+              <MdOutlineStar
+                className='animate-star-victory'
+                color='#FFDD87'
+                size='18px'
+              />
             </div>
             <div className='absolute right-10'>
-              <MdOutlineStar color='#FFDD87' size='18px' />
+              <MdOutlineStar
+                className='animate-star-victory'
+                color='#FFDD87'
+                size='18px'
+              />
             </div>
             <div className='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
               <span className={`${sen.className} text-2xl text-primary-300`}>
