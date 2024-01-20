@@ -57,31 +57,32 @@ const config: Config = {
       },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
-        'star-victory': 'star-victory 1s ease-in-out infinite',
-        'gradient-x': 'gradient-x 3s ease infinite',
+        'star-victory': 'star-victory 2s ease-in-out infinite',
+        'gradient-x': 'gradient-x 2s ease infinite',
       },
       keyframes: {
         'gradient-x': {
-          '0%, 100%': {
+          '0%, 50%, 100%': {
             'background-size': '500% 100%',
             'background-position': 'left center',
+            'background-color': '#DF5C9A',
           },
-          '50%': {
+          '15%, 75%': {
             'background-size': '100% 100%',
             'background-position': 'right center',
+            'background-color': '#C2FFC8',
           },
-        },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
         },
         'star-victory': {
           '0%': {
             opacity: '0',
             transform: 'scale(0.2)',
           },
-          '100%': {
+          '50%': {
             opacity: '1',
+          },
+          '100%': {
+            opacity: '0',
             transform: 'scale(2)',
           },
         },

@@ -25,9 +25,8 @@ export default function Mobile() {
     }
   };
   const navBorderColor = () => {
-    return `bg-gradient-to-r 
-from-accent-500 
-to-success-400
+    return `
+    bg-accent-500
 animate-gradient-x`;
   };
   return (
