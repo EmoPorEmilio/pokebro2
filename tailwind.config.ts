@@ -56,9 +56,8 @@ const config: Config = {
         incorrect: '#e74c3c',
       },
       animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite',
-        'star-victory': 'star-victory 2s ease-in-out infinite',
-        'gradient-x': 'gradient-x 2s ease infinite',
+        'star-victory': 'star-victory 2s ease-in-out',
+        'gradient-x': 'gradient-x 2s ease',
       },
       keyframes: {
         'gradient-x': {

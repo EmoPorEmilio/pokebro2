@@ -60,28 +60,28 @@ animate-gradient-x`;
           <div className='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
             <div className='absolute left-10'>
               <MdOutlineStar
-                className='animate-star-victory'
+                className='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div className='absolute left-7'>
               <MdOutlineStar
-                className='animate-star-victory'
+                className='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div className='absolute left-0'>
               <MdOutlineStar
-                className='animate-star-victory'
+                className='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div className='absolute right-10'>
               <MdOutlineStar
-                className='animate-star-victory'
+                className='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
