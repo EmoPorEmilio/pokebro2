@@ -33,7 +33,7 @@ animate-gradient-x`;
     <div className='flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased'>
       <nav className='h-14 w-full'>
         <div className='px-4 flex w-full mx-auto h-full items-center justify-between'>
-          <img src='/logo.png' className='w-[41px] h-[41px]' alt='logo' />
+          <img src='/logo.svg' className='w-[41px] h-[41px]' alt='logo' />
           <div className='flex justify-center'>
             <span className='block text-2xl text-accent-300 '>
               <span className={`${scoreColor()}`}>{currentScore}</span>/
