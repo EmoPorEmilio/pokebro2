@@ -1,3 +1,5 @@
+import { AiFillStar } from 'solid-icons/ai';
+
 export default function Mobile() {
   //const [gameState, setGameState] = useGameState();
   let currentScore = 80;
@@ -42,36 +44,35 @@ animate-gradient-x`;
             </div>
           </div>
           <div class='flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3'>
-            {/*}
             <div class='absolute left-10'>
-              <MdOutlineStar
-                class='animate-star-victory opacity-0'
+              <AiFillStar
+                style='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div class='absolute left-7'>
-              <MdOutlineStar
-                class='animate-star-victory opacity-0'
+              <AiFillStar
+                style='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div class='absolute left-0'>
-              <MdOutlineStar
-                class='animate-star-victory opacity-0'
+              <AiFillStar
+                style='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
             <div class='absolute right-10'>
-              <MdOutlineStar
-                class='animate-star-victory opacity-0'
+              <AiFillStar
+                style='animate-star-victory opacity-0'
                 color='#FFDD87'
                 size='18px'
               />
             </div>
-            */}
+
             <div class='flex w-full flex-1 items-center justify-center rounded-md border-b border-primary-500 bg-primary-700 '>
               <span class={`sen-text text-2xl text-primary-300`}>
                 Charmander
