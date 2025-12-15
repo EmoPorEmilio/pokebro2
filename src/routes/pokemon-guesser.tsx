@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/solid-router'
 import { createSignal, createEffect, onMount, onCleanup, Show } from 'solid-js'
 import { createQuery } from '@tanstack/solid-query'
-import { Header, Content, Pokemon, Options, YouLose, Error, BottomNav } from '@/components'
+import { Header, Content, Pokemon, Options, YouLose, Error, BottomNav, type FlashState } from '@/components'
 import {
   generateRandomAvailablePokemonNumber,
   randomizePokemonList,
@@ -38,6 +38,9 @@ function PokemonGuesser() {
   const [currentPokemon, setCurrentPokemon] = createSignal<PokemonType | null>(null)
   const [currentPokemonSrc, setCurrentPokemonSrc] = createSignal<string | null>(null)
   const [pokemonNameOptions, setPokemonNameOptions] = createSignal<PokemonType[]>([])
+  const [showCorrect, setShowCorrect] = createSignal(false)
+  const [showIncorrect, setShowIncorrect] = createSignal(false)
+  const [flashState, setFlashState] = createSignal<FlashState>('none')
 
   // Pokemon numbers to fetch for current level
   const [currentLevelPokemonNumbers, setCurrentLevelPokemonNumbers] = createSignal<number[]>([])
@@ -82,11 +85,19 @@ function PokemonGuesser() {
   }
 
   const handleCorrectOption = () => {
-    removePokemonsFromGameState()
+    setShowCorrect(true)
+    setFlashState('correct')
     setScorePoints((prevScorePoints) => {
       return padScorePoints(parseInt(prevScorePoints) + 1)
     })
-    setGameState(GAME_STATES.LEVEL_SETUP)
+
+    // Show correct stars briefly before moving to next level
+    setTimeout(() => {
+      setShowCorrect(false)
+      setFlashState('none')
+      removePokemonsFromGameState()
+      setGameState(GAME_STATES.LEVEL_SETUP)
+    }, 800)
   }
 
   const loseGame = () => {
@@ -95,6 +106,13 @@ function PokemonGuesser() {
   }
 
   const handleIncorrectOption = () => {
+    setShowIncorrect(true)
+    setFlashState('incorrect')
+    setTimeout(() => {
+      setShowIncorrect(false)
+      setFlashState('none')
+    }, 800)
+
     setHP((prevHP) => {
       const newHP = prevHP - 1
       if (newHP === 0) {
@@ -234,7 +252,7 @@ function PokemonGuesser() {
         scorePoints={scorePoints()}
         timer={timer()}
       />
-      <Content onClick={handleAppTap}>
+      <Content onClick={handleAppTap} flashState={flashState()}>
         <Show
           when={gameState() !== GAME_STATES.YOU_LOSE}
           fallback={
@@ -253,6 +271,7 @@ function PokemonGuesser() {
             <Pokemon
               loading={isLoading()}
               pokemonSrc={currentPokemonSrc()}
+              flashState={flashState()}
             />
             <Options
               correctNameOption={currentPokemon()?.name}
@@ -260,6 +279,8 @@ function PokemonGuesser() {
               loading={isLoading()}
               handleClickOption={handleClickOption}
               pokemonNameOptions={pokemonNameOptions()}
+              showCorrect={showCorrect()}
+              showIncorrect={showIncorrect()}
             />
           </Show>
         </Show>

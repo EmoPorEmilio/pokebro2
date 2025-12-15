@@ -1,6 +1,8 @@
 import { Show } from 'solid-js'
 import { useNavigate } from '@tanstack/solid-router'
 
+export type FlashState = 'none' | 'correct' | 'incorrect'
+
 interface HeaderProps {
   HP?: number
   scorePoints?: string

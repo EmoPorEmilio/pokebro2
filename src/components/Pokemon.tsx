@@ -1,14 +1,22 @@
 import { Show } from 'solid-js'
+import type { FlashState } from './Header'
 
 interface PokemonProps {
   pokemonSrc?: string | null
   loading: boolean
+  flashState?: FlashState
 }
 
 export function Pokemon(props: PokemonProps) {
+  const flashClass = () => {
+    if (props.flashState === 'correct') return 'pokemon-flash-correct'
+    if (props.flashState === 'incorrect') return 'pokemon-flash-incorrect'
+    return ''
+  }
+
   return (
     <div class="flex flex-col w-full py-10 px-10 justify-center items-center">
-      <div class="flex flex-col w-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent-500 bg-bg-300">
+      <div class={`flex flex-col w-full h-full items-center justify-center rounded-xl border border-primary-600 border-b-2 border-b-accent bg-bg-300 ${flashClass()}`}>
         <Show
           when={!props.loading}
           fallback={

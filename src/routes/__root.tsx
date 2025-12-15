@@ -25,8 +25,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'PokéBro 2' },
-      { name: 'description', content: 'WebApp de Juegos Pokémon' },
+      { title: 'PokéForos 2025' },
+      { name: 'description', content: 'Comunidad Pokémon Latinoamericana' },
     ],
     links: [
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },

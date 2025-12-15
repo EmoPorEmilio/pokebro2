@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/solid-router'
 import { createSignal, createEffect, onCleanup, Show } from 'solid-js'
-import { Header, Content, Types, TypeEffectivenessOptions, YouLose, Error, BottomNav } from '@/components'
+import { Header, Content, Types, TypeEffectivenessOptions, YouLose, Error, BottomNav, type FlashState } from '@/components'
 import {
   generateRandomAvailableTypeCombination,
   getTypesCombinationDamageCorrectOption,
@@ -33,6 +33,8 @@ function DamageCalculator() {
   const [availableLevelCombinations, setAvailableLevelCombinations] = createSignal<[number, number, number | null][]>([])
   const [currentTypesCombination, setCurrentTypesCombination] = createSignal<[number, number, number | null]>([0, 0, null])
   const [correctOption, setCorrectOption] = createSignal<string | null>(null)
+  const [showVictory, setShowVictory] = createSignal(false)
+  const [flashState, setFlashState] = createSignal<FlashState>('none')
 
   let timerCountdown: ReturnType<typeof setInterval> | null = null
 
@@ -53,11 +55,19 @@ function DamageCalculator() {
   }
 
   const handleCorrectOption = () => {
-    removeTypesFromGameState()
+    setShowVictory(true)
+    setFlashState('correct')
     setScorePoints((prevScorePoints) => {
       return padScorePoints(parseInt(prevScorePoints) + 1)
     })
-    setGameState(GAME_STATES.LEVEL_SETUP)
+
+    // Show victory stars briefly before moving to next level
+    setTimeout(() => {
+      setShowVictory(false)
+      setFlashState('none')
+      removeTypesFromGameState()
+      setGameState(GAME_STATES.LEVEL_SETUP)
+    }, 800)
   }
 
   const loseGame = () => {
@@ -66,6 +76,9 @@ function DamageCalculator() {
   }
 
   const handleIncorrectOption = () => {
+    setFlashState('incorrect')
+    setTimeout(() => setFlashState('none'), 800)
+
     setHP((prevHP) => {
       const newHP = prevHP - 1
       if (newHP === 0) {
@@ -202,7 +215,7 @@ function DamageCalculator() {
         scorePoints={scorePoints()}
         timer={timer()}
       />
-      <Content onClick={handleAppTap}>
+      <Content onClick={handleAppTap} flashState={flashState()}>
         <Show
           when={gameState() !== GAME_STATES.YOU_LOSE}
           fallback={
@@ -232,6 +245,7 @@ function DamageCalculator() {
                 loading={gameState() === GAME_STATES.LEVEL_SETUP}
                 handleClickOption={handleClickOption}
                 options={getOptions()}
+                showVictory={showVictory()}
               />
             </Show>
           </Show>

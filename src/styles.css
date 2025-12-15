@@ -89,11 +89,79 @@
   }
   50% {
     opacity: 1;
+    transform: scale(1);
   }
   100% {
     opacity: 0;
     transform: scale(2);
   }
+}
+
+/* Victory star animation class */
+.star-victory-animate {
+  animation: star-victory 0.8s ease-out forwards;
+}
+
+/* Defeat X animation */
+@keyframes x-defeat {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2) rotate(360deg);
+  }
+}
+
+.x-defeat-animate {
+  animation: x-defeat 0.8s ease-out forwards;
+}
+
+/* Content border flash animations */
+@keyframes content-flash-correct {
+  0% { background-color: #DF5C9A; }
+  50% { background-color: #83f1a7; }
+  100% { background-color: #DF5C9A; }
+}
+
+@keyframes content-flash-incorrect {
+  0% { background-color: #DF5C9A; }
+  50% { background-color: #e74c3c; }
+  100% { background-color: #DF5C9A; }
+}
+
+.content-flash-correct {
+  animation: content-flash-correct 0.8s ease-out forwards;
+}
+
+.content-flash-incorrect {
+  animation: content-flash-incorrect 0.8s ease-out forwards;
+}
+
+/* Pokemon card border flash animations */
+@keyframes pokemon-flash-correct {
+  0% { border-bottom-color: #DF5C9A; }
+  50% { border-bottom-color: #83f1a7; }
+  100% { border-bottom-color: #DF5C9A; }
+}
+
+@keyframes pokemon-flash-incorrect {
+  0% { border-bottom-color: #DF5C9A; }
+  50% { border-bottom-color: #e74c3c; }
+  100% { border-bottom-color: #DF5C9A; }
+}
+
+.pokemon-flash-correct {
+  animation: pokemon-flash-correct 0.8s ease-out forwards;
+}
+
+.pokemon-flash-incorrect {
+  animation: pokemon-flash-incorrect 0.8s ease-out forwards;
 }
 
 /* Base styles */

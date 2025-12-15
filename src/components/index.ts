@@ -1,5 +1,5 @@
 export { Content } from './Content'
-export { Header } from './Header'
+export { Header, type FlashState } from './Header'
 export { Pokemon } from './Pokemon'
 export { Options } from './Options'
 export { Types } from './Types'

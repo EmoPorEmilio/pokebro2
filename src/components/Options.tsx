@@ -7,7 +7,8 @@ interface OptionsProps {
   pokemonNameOptions: Pokemon[]
   handleClickOption: (pokemon: Pokemon) => void
   validation: boolean
-  showVictory?: boolean
+  showCorrect?: boolean
+  showIncorrect?: boolean
 }
 
 export function Options(props: OptionsProps) {
@@ -22,8 +23,11 @@ export function Options(props: OptionsProps) {
 
   return (
     <div class="flex flex-col w-full h-full px-10 pb-10 justify-center items-center gap-3 relative">
-      <Show when={props.showVictory}>
-        <VictoryStars />
+      <Show when={props.showCorrect}>
+        <CorrectStars />
+      </Show>
+      <Show when={props.showIncorrect}>
+        <IncorrectXs />
       </Show>
       <Show
         when={props.pokemonNameOptions && !props.loading}
@@ -100,40 +104,90 @@ function OptionLoader() {
   )
 }
 
-function VictoryStars() {
+function CorrectStars() {
   return (
     <>
-      <div class="absolute left-12 top-4">
+      {/* Top row */}
+      <div class="absolute left-1/4 -top-8">
         <Star style={{ 'animation-delay': '0s' }} />
       </div>
-      <div class="absolute left-8 top-12">
+      <div class="absolute left-1/2 -top-12 -translate-x-1/2">
+        <Star style={{ 'animation-delay': '0.1s' }} size="lg" />
+      </div>
+      <div class="absolute right-1/4 -top-8">
         <Star style={{ 'animation-delay': '0.2s' }} />
       </div>
-      <div class="absolute left-4 top-20">
-        <Star style={{ 'animation-delay': '0.4s' }} />
+      {/* Side bursts */}
+      <div class="absolute -left-2 top-1/4">
+        <Star style={{ 'animation-delay': '0.15s' }} />
       </div>
-      <div class="absolute right-12 top-4">
-        <Star style={{ 'animation-delay': '0.1s' }} />
+      <div class="absolute -right-2 top-1/4">
+        <Star style={{ 'animation-delay': '0.25s' }} />
       </div>
-      <div class="absolute right-8 top-12">
-        <Star style={{ 'animation-delay': '0.3s' }} />
+      <div class="absolute -left-4 top-1/2">
+        <Star style={{ 'animation-delay': '0.3s' }} size="lg" />
       </div>
-      <div class="absolute right-4 top-20">
-        <Star style={{ 'animation-delay': '0.5s' }} />
+      <div class="absolute -right-4 top-1/2">
+        <Star style={{ 'animation-delay': '0.35s' }} size="lg" />
       </div>
     </>
   )
 }
 
-function Star(props: { style?: JSX.CSSProperties }) {
+function Star(props: { style?: JSX.CSSProperties; size?: 'sm' | 'lg' }) {
+  const sizeClass = () => props.size === 'lg' ? 'w-6 h-6' : 'w-4.5 h-4.5'
   return (
     <svg
-      class="w-[18px] h-[18px] animate-star-victory opacity-0"
+      class={`${sizeClass()} star-victory-animate`}
       style={props.style}
       viewBox="0 0 24 24"
-      fill="#FFDD87"
+      fill="#83f1a7"
     >
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  )
+}
+
+function IncorrectXs() {
+  return (
+    <>
+      {/* Top row */}
+      <div class="absolute left-1/4 -top-8">
+        <XIcon style={{ 'animation-delay': '0s' }} />
+      </div>
+      <div class="absolute left-1/2 -top-12 -translate-x-1/2">
+        <XIcon style={{ 'animation-delay': '0.1s' }} size="lg" />
+      </div>
+      <div class="absolute right-1/4 -top-8">
+        <XIcon style={{ 'animation-delay': '0.2s' }} />
+      </div>
+      {/* Side bursts */}
+      <div class="absolute -left-2 top-1/4">
+        <XIcon style={{ 'animation-delay': '0.15s' }} />
+      </div>
+      <div class="absolute -right-2 top-1/4">
+        <XIcon style={{ 'animation-delay': '0.25s' }} />
+      </div>
+      <div class="absolute -left-4 top-1/2">
+        <XIcon style={{ 'animation-delay': '0.3s' }} size="lg" />
+      </div>
+      <div class="absolute -right-4 top-1/2">
+        <XIcon style={{ 'animation-delay': '0.35s' }} size="lg" />
+      </div>
+    </>
+  )
+}
+
+function XIcon(props: { style?: JSX.CSSProperties; size?: 'sm' | 'lg' }) {
+  const sizeClass = () => props.size === 'lg' ? 'w-6 h-6' : 'w-4.5 h-4.5'
+  return (
+    <svg
+      class={`${sizeClass()} x-defeat-animate`}
+      style={props.style}
+      viewBox="0 0 24 24"
+      fill="#e74c3c"
+    >
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
     </svg>
   )
 }
