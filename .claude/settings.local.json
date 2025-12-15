@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(tree:*)",
+      "Bash(cat:*)",
+      "Bash(bun install:*)",
+      "Bash(timeout 15 bun run dev:*)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(bunx tsc:*)",
+      "Bash(bun run build)"
+    ]
+  }
+}

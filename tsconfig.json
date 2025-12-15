@@ -1,29 +1,26 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "jsxImportSource": "solid-js",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./src/*"]
     },
-    "types": ["@cloudflare/workers-types"]
+    "types": ["node", "vite/client"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"],
   "exclude": ["node_modules"]
 }

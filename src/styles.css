@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* Custom screens */
+@theme {
+  --breakpoint-xxs: 320px;
+  --breakpoint-xs: 475px;
+
+  /* Custom colors */
+  --color-bg-100: #3B5260;
+  --color-bg-200: #293E4B;
+  --color-bg-300: #24313a;
+  --color-bg-400: #1D272E;
+  --color-bg-light: #515151;
+
+  --color-accent: #DF5C9A;
+  --color-accent-200: #FFB2D7;
+  --color-accent-300: #FF88C0;
+  --color-accent-500: #DF5C9A;
+  --color-accent-highlight: #e2a2be;
+
+  --color-primary-100: #D9F2FF;
+  --color-primary-200: #D0E9F5;
+  --color-primary-300: #ADCCDC;
+  --color-primary-400: #B8DFFF;
+  --color-primary-500: #75ABC7;
+  --color-primary-600: #58748B;
+  --color-primary-700: #4F6D85;
+  --color-primary-800: #4C6477;
+
+  --color-success-100: #E5FFF3;
+  --color-success-400: #C2FFC8;
+  --color-success-600: #559D87;
+
+  --color-warning-100: #FFFBE5;
+  --color-warning-400: #FFDD87;
+  --color-warning-600: #9D8D55;
+
+  --color-danger-100: #FFE5E5;
+  --color-danger-400: #FF8787;
+  --color-danger-600: #9D5555;
+
+  --color-cards-bg: #373737;
+  --color-cards-bg-load: #484848;
+  --color-correct: #83f1a7;
+  --color-incorrect: #e74c3c;
+
+  /* Pokemon type colors */
+  --color-type-normal: #A8A878;
+  --color-type-fighting: #C03028;
+  --color-type-flying: #A890f0;
+  --color-type-poison: #a040a0;
+  --color-type-ground: #e0c068;
+  --color-type-rock: #b8a038;
+  --color-type-bug: #a8b820;
+  --color-type-ghost: #705898;
+  --color-type-steel: #b8b8d0;
+  --color-type-fire: #f08030;
+  --color-type-water: #6890f0;
+  --color-type-grass: #78c850;
+  --color-type-electric: #f8d030;
+  --color-type-psychic: #f85888;
+  --color-type-ice: #98d8d8;
+  --color-type-dragon: #7038f8;
+  --color-type-dark: #705848;
+  --color-type-fairy: #EE99AC;
+
+  /* Custom animations */
+  --animate-star-victory: star-victory 2s ease-in-out;
+  --animate-gradient-x: gradient-x 2s ease;
+}
+
+@keyframes gradient-x {
+  0%, 50%, 100% {
+    background-size: 500% 100%;
+    background-position: left center;
+    background-color: #DF5C9A;
+  }
+  15%, 75% {
+    background-size: 100% 100%;
+    background-position: right center;
+    background-color: #C2FFC8;
+  }
+}
+
+@keyframes star-victory {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Base styles */
+body {
+  height: 100dvh;
+}
+
+/* Font families - loaded via Google Fonts in root */
+.font-jost {
+  font-family: 'Jost', sans-serif;
+}
+
+.font-sen {
+  font-family: 'Sen', sans-serif;
+}

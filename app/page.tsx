@@ -15,6 +15,7 @@ export const runtime = 'edge';
 const queryClient = new QueryClient();
 
 export default function Game() {
+  /*
     const mutation = useMutation(async()=>{
 
     }, {
@@ -22,8 +23,7 @@ export default function Game() {
       // Invalidate and refetch
       queryClient.invalidateQueries('todos')
     },
-  })
-  }
+  })*/
 
   const [currentScore, setCurrentScore] = useState('000');
   const [maxScore, setMaxScore] = useState('000');
@@ -38,9 +38,7 @@ export default function Game() {
   }, [currentScore, maxScore]);
 
   const navBorderColor = () => {
-    return `
-    bg-accent-500
-animate-gradient-x`;
+    return `bg-accent-500 animate-gradient-x`;
   };
   return (
     <QueryClientProvider client={queryClient}>
