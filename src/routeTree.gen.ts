@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PokemonGuesserRouteImport } from './routes/pokemon-guesser'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as DamageCalculatorRouteImport } from './routes/damage-calculator'
 import { Route as IndexRouteImport } from './routes/index'
 
 const PokemonGuesserRoute = PokemonGuesserRouteImport.update({
   id: '/pokemon-guesser',
   path: '/pokemon-guesser',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DamageCalculatorRoute = DamageCalculatorRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
+  '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
+  '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
+  '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/damage-calculator' | '/pokemon-guesser'
+  fullPaths: '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/damage-calculator' | '/pokemon-guesser'
-  id: '__root__' | '/' | '/damage-calculator' | '/pokemon-guesser'
+  to: '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
+  id: '__root__' | '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DamageCalculatorRoute: typeof DamageCalculatorRoute
+  GamesRoute: typeof GamesRoute
   PokemonGuesserRoute: typeof PokemonGuesserRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/solid-router' {
       path: '/pokemon-guesser'
       fullPath: '/pokemon-guesser'
       preLoaderRoute: typeof PokemonGuesserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/damage-calculator': {
@@ -88,6 +105,7 @@ declare module '@tanstack/solid-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DamageCalculatorRoute: DamageCalculatorRoute,
+  GamesRoute: GamesRoute,
   PokemonGuesserRoute: PokemonGuesserRoute,
 }
 export const routeTree = rootRouteImport

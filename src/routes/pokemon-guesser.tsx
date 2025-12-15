@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/solid-router'
+import { createFileRoute } from '@tanstack/solid-router'
 import { createSignal, createEffect, onMount, onCleanup, Show } from 'solid-js'
 import { createQuery } from '@tanstack/solid-query'
 import { Header, Content, Pokemon, Options, YouLose, Error, BottomNav } from '@/components'
@@ -27,47 +27,17 @@ export const Route = createFileRoute('/pokemon-guesser')({
 })
 
 function PokemonGuesser() {
-  const navigate = useNavigate()
-
-  const getStateFromStorage = () => {
-    if (typeof window === 'undefined') {
-      return {
-        availablePokes: [],
-        scorePoints: '000',
-        HP: 3,
-        currentPokemon: null,
-        currentPokemonSrc: null,
-        pokemonNameOptions: [],
-        level: 0,
-        gameState: GAME_STATES.LEVEL_SETUP as GameState,
-        timer: TIMER_INITIAL_VALUE,
-      }
-    }
-    return {
-      availablePokes: JSON.parse(localStorage.getItem('availablePokes') ?? '[]'),
-      scorePoints: localStorage.getItem('scorePoints') ?? '000',
-      HP: parseInt(localStorage.getItem('HP') ?? '3'),
-      currentPokemon: JSON.parse(localStorage.getItem('currentPokemon') ?? 'null'),
-      currentPokemonSrc: localStorage.getItem('currentPokemonSrc') ?? null,
-      pokemonNameOptions: JSON.parse(localStorage.getItem('pokemonNameOptions') ?? '[]'),
-      level: parseInt(localStorage.getItem('level') ?? '0'),
-      gameState: (localStorage.getItem('gameState') ?? GAME_STATES.LEVEL_SETUP) as GameState,
-      timer: parseInt(localStorage.getItem('timer') ?? String(TIMER_INITIAL_VALUE)),
-    }
-  }
-
-  const stateFromStorage = getStateFromStorage()
-
-  const [timer, setTimer] = createSignal(stateFromStorage.timer)
-  const [HP, setHP] = createSignal(stateFromStorage.HP)
-  const [scorePoints, setScorePoints] = createSignal(stateFromStorage.scorePoints)
-  const [level, setLevel] = createSignal(stateFromStorage.level)
-  const [gameState, setGameState] = createSignal<GameState>(stateFromStorage.gameState)
+  // Always start fresh - no localStorage persistence
+  const [timer, setTimer] = createSignal(TIMER_INITIAL_VALUE)
+  const [HP, setHP] = createSignal(3)
+  const [scorePoints, setScorePoints] = createSignal('000')
+  const [level, setLevel] = createSignal(0)
+  const [gameState, setGameState] = createSignal<GameState>(GAME_STATES.LEVEL_SETUP)
   const [errorMessage, setErrorMessage] = createSignal('')
-  const [availablePokes, setAvailablePokes] = createSignal<number[]>(stateFromStorage.availablePokes)
-  const [currentPokemon, setCurrentPokemon] = createSignal<PokemonType | null>(stateFromStorage.currentPokemon)
-  const [currentPokemonSrc, setCurrentPokemonSrc] = createSignal<string | null>(stateFromStorage.currentPokemonSrc)
-  const [pokemonNameOptions, setPokemonNameOptions] = createSignal<PokemonType[]>(stateFromStorage.pokemonNameOptions)
+  const [availablePokes, setAvailablePokes] = createSignal<number[]>([])
+  const [currentPokemon, setCurrentPokemon] = createSignal<PokemonType | null>(null)
+  const [currentPokemonSrc, setCurrentPokemonSrc] = createSignal<string | null>(null)
+  const [pokemonNameOptions, setPokemonNameOptions] = createSignal<PokemonType[]>([])
 
   // Pokemon numbers to fetch for current level
   const [currentLevelPokemonNumbers, setCurrentLevelPokemonNumbers] = createSignal<number[]>([])
@@ -95,28 +65,18 @@ function PokemonGuesser() {
     retry: 3,
   }))
 
-  const handleHeaderBack = () => {
-    navigate({ to: '/' })
-  }
-
   const handleAppTap = () => {
     if (gameState() === GAME_STATES.VALIDATION) {
       removePokemonsFromGameState()
       setGameState(GAME_STATES.LEVEL_SETUP)
-      localStorage.setItem('gameState', GAME_STATES.LEVEL_SETUP)
     }
   }
 
   const handleClickOption = (pokemon: PokemonType) => {
-    setLevel((prevLevel) => {
-      const newLevel = prevLevel + 1
-      localStorage.setItem('level', String(newLevel))
-      return newLevel
-    })
+    setLevel((prevLevel) => prevLevel + 1)
     if (currentPokemon()?.name === pokemon.name) {
       handleCorrectOption()
     } else {
-      removeLevelInfoFromStorage()
       handleIncorrectOption()
     }
   }
@@ -124,9 +84,7 @@ function PokemonGuesser() {
   const handleCorrectOption = () => {
     removePokemonsFromGameState()
     setScorePoints((prevScorePoints) => {
-      const newScorePoints = padScorePoints(parseInt(prevScorePoints) + 1)
-      localStorage.setItem('scorePoints', newScorePoints)
-      return newScorePoints
+      return padScorePoints(parseInt(prevScorePoints) + 1)
     })
     setGameState(GAME_STATES.LEVEL_SETUP)
   }
@@ -139,7 +97,6 @@ function PokemonGuesser() {
   const handleIncorrectOption = () => {
     setHP((prevHP) => {
       const newHP = prevHP - 1
-      localStorage.setItem('HP', String(newHP))
       if (newHP === 0) {
         loseGame()
       } else {
@@ -174,43 +131,11 @@ function PokemonGuesser() {
     }
   }
 
-  const saveGameStateToStorage = (
-    newAvailableNumbers: number[],
-    pokemonToGuess: PokemonType,
-    imgSrc: string,
-    newPokemons: PokemonType[]
-  ) => {
-    localStorage.setItem('availablePokes', JSON.stringify(newAvailableNumbers))
-    localStorage.setItem('scorePoints', scorePoints())
-    localStorage.setItem('HP', String(HP()))
-    localStorage.setItem('currentPokemon', JSON.stringify(pokemonToGuess))
-    localStorage.setItem('currentPokemonSrc', imgSrc)
-    localStorage.setItem('pokemonNameOptions', JSON.stringify(newPokemons))
-    localStorage.setItem('level', String(level()))
-    localStorage.setItem('gameState', GAME_STATES.LEVEL_INFO)
-  }
-
   const removePokemonsFromGameState = () => {
     setCurrentPokemon(null)
     setCurrentPokemonSrc(null)
     setPokemonNameOptions([])
     setCurrentLevelPokemonNumbers([])
-  }
-
-  const removeLevelInfoFromStorage = () => {
-    localStorage.removeItem('gameState')
-    localStorage.removeItem('currentPokemon')
-    localStorage.removeItem('currentPokemonSrc')
-    localStorage.removeItem('pokemonNameOptions')
-  }
-
-  const removeGameStateFromStorage = () => {
-    localStorage.removeItem('availablePokes')
-    localStorage.removeItem('scorePoints')
-    localStorage.removeItem('HP')
-    removeLevelInfoFromStorage()
-    localStorage.removeItem('level')
-    localStorage.removeItem('timer')
   }
 
   const updateAvailables = (availableNumbers: number[], idx: number) => {
@@ -233,8 +158,6 @@ function PokemonGuesser() {
       const newTimer = currentTimer - 1
       if (newTimer <= 0) {
         loseGame()
-      } else {
-        localStorage.setItem('timer', String(newTimer))
       }
       return newTimer
     })
@@ -250,8 +173,6 @@ function PokemonGuesser() {
     if (state === GAME_STATES.LEVEL_SETUP && currentLevelPokemonNumbers().length === 0) {
       const isSetup = level() === 0
       initiateLevelFetch(isSetup)
-    } else if (state === GAME_STATES.YOU_LOSE) {
-      removeGameStateFromStorage()
     }
   })
 
@@ -274,8 +195,7 @@ function PokemonGuesser() {
 
         const idx = indexToRemove()
         if (idx !== null) {
-          const newAvailableNumbers = updateAvailables(availablePokes(), idx)
-          saveGameStateToStorage(newAvailableNumbers, pokemonToGuess, imageData, randomizedOptions)
+          updateAvailables(availablePokes(), idx)
         }
 
         setGameState(GAME_STATES.LEVEL_INFO)
@@ -307,9 +227,8 @@ function PokemonGuesser() {
     pokemonImageQuery.isPending
 
   return (
-    <div class="flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased">
+    <div class="flex flex-col h-dvh w-dvw bg-bg-400 antialiased">
       <Header
-        handleHeaderBack={handleHeaderBack}
         inGame={true}
         HP={HP()}
         scorePoints={scorePoints()}

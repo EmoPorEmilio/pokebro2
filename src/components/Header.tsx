@@ -1,56 +1,47 @@
 import { Show } from 'solid-js'
+import { useNavigate } from '@tanstack/solid-router'
 
 interface HeaderProps {
   HP?: number
   scorePoints?: string
   maxScore?: string
   inGame: boolean
-  handleHeaderBack?: () => void
   timer?: number
 }
 
 export function Header(props: HeaderProps) {
+  const navigate = useNavigate()
+
   return (
     <nav class="h-14 w-full">
       <div class="px-4 flex w-full mx-auto h-full items-center justify-between">
-        <Show when={!props.inGame}>
-          <Logo />
-          <div />
-        </Show>
+        <Logo onClick={() => navigate({ to: '/' })} />
         <Show when={props.inGame}>
-          <BackButton onClick={props.handleHeaderBack} />
           <ScoreDisplay
             scorePoints={props.scorePoints}
             maxScore={props.maxScore}
           />
           <GameStats HP={props.HP} timer={props.timer} />
         </Show>
+        <Show when={!props.inGame}>
+          <div />
+        </Show>
       </div>
     </nav>
   )
 }
 
-function Logo() {
-  return <img src="/logo.svg" class="w-[41px] h-[41px]" alt="logo" />
-}
-
-interface BackButtonProps {
+interface LogoProps {
   onClick?: () => void
 }
 
-function BackButton(props: BackButtonProps) {
+function Logo(props: LogoProps) {
   return (
     <button
-      class="flex items-center justify-center w-10 h-10 hover:cursor-pointer"
+      class="hover:opacity-80 transition-opacity"
       onClick={props.onClick}
     >
-      <svg
-        class="w-6 h-6 fill-accent hover:fill-primary-300 transition-colors"
-        viewBox="0 0 24 24"
-      >
-        <path d="M24 0v24H0V0h24z" fill="none" opacity=".87" />
-        <path d="M12.29 8.71L9.7 11.3c-.39.39-.39 1.02 0 1.41l2.59 2.59c.63.63 1.71.18 1.71-.71V9.41c0-.89-1.08-1.33-1.71-.7z" />
-      </svg>
+      <img src="/logo.svg" class="w-[41px] h-[41px]" alt="logo" />
     </button>
   )
 }

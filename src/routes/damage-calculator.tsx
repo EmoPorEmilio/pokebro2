@@ -1,5 +1,5 @@
-import { createFileRoute, useNavigate } from '@tanstack/solid-router'
-import { createSignal, createEffect, onMount, onCleanup, Show } from 'solid-js'
+import { createFileRoute } from '@tanstack/solid-router'
+import { createSignal, createEffect, onCleanup, Show } from 'solid-js'
 import { Header, Content, Types, TypeEffectivenessOptions, YouLose, Error, BottomNav } from '@/components'
 import {
   generateRandomAvailableTypeCombination,
@@ -22,42 +22,19 @@ export const Route = createFileRoute('/damage-calculator')({
 })
 
 function DamageCalculator() {
-  const navigate = useNavigate()
-
-  const initState = () => ({
-    HP: 3,
-    scorePoints: '000',
-    level: 0,
-    difficulty: null as DifficultyLevel | null,
-    gameState: GAME_STATES.SELECT_DIFFICULTY as GameState,
-    availableLevelCombinations: [] as [number, number, number | null][],
-    currentTypesCombination: [0, 0, null] as [number, number, number | null],
-    correctOption: null as string | null,
-    timer: TIMER_INITIAL_VALUE,
-  })
-
-  const stateFromStorage = initState()
-
-  const [HP, setHP] = createSignal(stateFromStorage.HP)
-  const [scorePoints, setScorePoints] = createSignal(stateFromStorage.scorePoints)
-  const [level, setLevel] = createSignal(stateFromStorage.level)
-  const [timer, setTimer] = createSignal(stateFromStorage.timer)
-  const [gameState, setGameState] = createSignal<GameState>(stateFromStorage.gameState)
-  const [difficulty, setDifficulty] = createSignal<DifficultyLevel | null>(stateFromStorage.difficulty)
+  // Always start fresh - no state persistence
+  const [HP, setHP] = createSignal(3)
+  const [scorePoints, setScorePoints] = createSignal('000')
+  const [level, setLevel] = createSignal(0)
+  const [timer, setTimer] = createSignal(TIMER_INITIAL_VALUE)
+  const [gameState, setGameState] = createSignal<GameState>(GAME_STATES.SELECT_DIFFICULTY)
+  const [difficulty, setDifficulty] = createSignal<DifficultyLevel | null>(null)
   const [errorMessage, setErrorMessage] = createSignal('')
-  const [availableLevelCombinations, setAvailableLevelCombinations] = createSignal<[number, number, number | null][]>(
-    stateFromStorage.availableLevelCombinations
-  )
-  const [currentTypesCombination, setCurrentTypesCombination] = createSignal<[number, number, number | null]>(
-    stateFromStorage.currentTypesCombination
-  )
-  const [correctOption, setCorrectOption] = createSignal<string | null>(stateFromStorage.correctOption)
+  const [availableLevelCombinations, setAvailableLevelCombinations] = createSignal<[number, number, number | null][]>([])
+  const [currentTypesCombination, setCurrentTypesCombination] = createSignal<[number, number, number | null]>([0, 0, null])
+  const [correctOption, setCorrectOption] = createSignal<string | null>(null)
 
   let timerCountdown: ReturnType<typeof setInterval> | null = null
-
-  const handleHeaderBack = () => {
-    navigate({ to: '/' })
-  }
 
   const handleAppTap = () => {
     if (gameState() === GAME_STATES.VALIDATION) {
@@ -78,8 +55,7 @@ function DamageCalculator() {
   const handleCorrectOption = () => {
     removeTypesFromGameState()
     setScorePoints((prevScorePoints) => {
-      const newScorePoints = padScorePoints(parseInt(prevScorePoints) + 1)
-      return newScorePoints
+      return padScorePoints(parseInt(prevScorePoints) + 1)
     })
     setGameState(GAME_STATES.LEVEL_SETUP)
   }
@@ -106,6 +82,8 @@ function DamageCalculator() {
     setHP(3)
     setTimer(TIMER_INITIAL_VALUE)
     setScorePoints('000')
+    setDifficulty(null)
+    setAvailableLevelCombinations([])
     setGameState(GAME_STATES.SELECT_DIFFICULTY)
   }
 
@@ -114,8 +92,8 @@ function DamageCalculator() {
     setCorrectOption(null)
   }
 
-  const loadNewLevel = async (firstSetup: boolean) => {
-    let availableTypeCombinations = firstSetup
+  const loadNewLevel = (firstSetup: boolean) => {
+    const availableTypeCombinations = firstSetup
       ? getInitialAvailableTypeCombinations()
       : availableLevelCombinations()
 
@@ -126,7 +104,7 @@ function DamageCalculator() {
     setCorrectOption(getTypesCombinationDamageCorrectOption(randomTypeCombination))
     setGameState(GAME_STATES.LEVEL_INFO)
 
-    const newAvailableNumbers = updateAvailables(availableTypeCombinations, randomTypeIndex)
+    updateAvailables(availableTypeCombinations, randomTypeIndex)
   }
 
   const updateAvailables = (availableTypeCombinations: [number, number, number | null][], indexToRemove: number) => {
@@ -208,12 +186,6 @@ function DamageCalculator() {
           const isSetup = level() === 0
           loadNewLevel(isSetup)
           break
-        case GAME_STATES.LEVEL_INFO:
-          break
-        case GAME_STATES.VALIDATION:
-          break
-        case GAME_STATES.YOU_LOSE:
-          break
       }
     }
   })
@@ -223,9 +195,8 @@ function DamageCalculator() {
   })
 
   return (
-    <div class="flex flex-col h-[100dvh] w-[100dvw] bg-bg-400 antialiased">
+    <div class="flex flex-col h-dvh w-dvw bg-bg-400 antialiased">
       <Header
-        handleHeaderBack={handleHeaderBack}
         inGame={true}
         HP={HP()}
         scorePoints={scorePoints()}
@@ -279,12 +250,14 @@ function DifficultySelector(props: DifficultySelectorProps) {
   return (
     <div class="flex flex-col w-[80vw] max-w-[350px] justify-center items-center gap-4">
       <button
+        type="button"
         class="flex justify-center items-center rounded-lg min-h-[60px] w-full bg-cards-bg border-accent-200 border border-solid text-accent text-center font-bold text-xl hover:cursor-pointer hover:bg-accent hover:border-white hover:text-cards-bg transition-colors"
         onClick={() => props.goToGame(DIFFICULTY_LEVELS.EASY)}
       >
         <span>{DIFFICULTY_LEVELS.EASY}</span>
       </button>
       <button
+        type="button"
         class="flex justify-center items-center rounded-lg min-h-[60px] w-full bg-cards-bg border-accent-200 border border-solid text-accent text-center font-bold text-xl hover:cursor-pointer hover:bg-accent hover:border-white hover:text-cards-bg transition-colors"
         onClick={() => props.goToGame(DIFFICULTY_LEVELS.HARD)}
       >

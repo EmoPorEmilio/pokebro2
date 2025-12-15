@@ -1,19 +1,17 @@
-# PokeBro 2
+# PokeForos
 
-Pokemon mini-games web app. Two game modes:
+Web app para la comunidad PokéForos. Incluye foros de discusión y minijuegos:
 
-- **Who's That Pokemon?** - guess the pokemon from its sprite
-- **How Much Does It Hit?** - type effectiveness quiz (easy/hard difficulty)
+- **Quién es ese Pokémon?** - cuestionario de Pokémon en base a Sprites
+- **Cuánto pega eso?** - cuestionario de efectividad de tipos
 
 ## Stack
 
 Bun, TanStack Start, SolidJS, Tailwind v4, Vite
 
-## Run
+## Ejecución
 
 ```bash
 bun install
 bun run dev
 ```
-
-Opens on http://localhost:3000

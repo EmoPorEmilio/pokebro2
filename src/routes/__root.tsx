@@ -29,7 +29,7 @@ export const Route = createRootRoute({
       { name: 'description', content: 'WebApp de Juegos Pokémon' },
     ],
     links: [
-      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&family=Sen:wght@400;700;800&display=swap'
