@@ -177,3 +177,21 @@ body {
 .font-sen {
   font-family: 'Sen', sans-serif;
 }
+
+/* ============================================
+   Viviana UI - Custom Styles
+   ============================================ */
+
+/* Custom drop shadows */
+.drop-shadow-title-card {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.drop-shadow-logo {
+  filter: drop-shadow(0 0 10px rgba(223, 92, 154, 0.8));
+}
+
+.shadow-primary-chip {
+  box-shadow: 0 2px 8px rgba(79, 109, 133, 0.4);
+}
+
