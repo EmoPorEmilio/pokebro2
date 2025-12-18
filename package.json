@@ -11,17 +11,21 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "@tanstack/solid-start": "^1.93.1",
-    "@tanstack/solid-router": "^1.93.1",
     "@tanstack/solid-query": "^5.62.8",
-    "solid-js": "^1.9.3",
+    "@tanstack/solid-router": "^1.93.1",
+    "@tanstack/solid-start": "^1.93.1",
+    "arctic": "^3.7.0",
+    "drizzle-orm": "^0.45.1",
     "solid-icons": "^1.1.0",
+    "solid-js": "^1.9.3",
     "vite": "^6.0.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.18.0",
+    "@cloudflare/workers-types": "^4.20251217.0",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.10.2",
+    "drizzle-kit": "^0.31.8",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",
     "vite-plugin-solid": "^2.11.0",

@@ -207,8 +207,8 @@ function Home() {
                 <span class="text-sm text-primary-300 mb-2 block">Tab Switch:</span>
                 <TabSwitch
                   options={[
-                    { label: 'TENDENCIAS', value: 'trending', width: '142px' },
-                    { label: 'ULTIMOS', value: 'latest', width: '108px' },
+                    { label: 'TENDENCIAS', value: 'trending' },
+                    { label: 'ULTIMOS', value: 'latest' },
                   ]}
                   value={activeTab()}
                   onChange={setActiveTab}

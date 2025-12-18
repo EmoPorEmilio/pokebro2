@@ -3,5 +3,29 @@
   "name": "pokeforos",
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/solid-start/server-entry"
+  "main": "./src/server.ts",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pokeforos-db",
+      "database_id": "a65c918b-45e5-4205-9d2c-3e376af8a5d0"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SESSIONS",
+        "class_name": "SessionDO"
+      }
+    ]
+  },
+
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["SessionDO"]
+    }
+  ]
 }

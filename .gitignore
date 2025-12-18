@@ -36,4 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 #sql
-sql
+sql.dev.vars
+.dev.vars
+
+.claude/

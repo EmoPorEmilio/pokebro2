@@ -13,6 +13,9 @@ import { Route as PokemonGuesserRouteImport } from './routes/pokemon-guesser'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as DamageCalculatorRouteImport } from './routes/damage-calculator'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthLogoutRouteImport } from './routes/auth/logout'
+import { Route as AuthGoogleRouteImport } from './routes/auth/google'
+import { Route as AuthGoogleCallbackRouteImport } from './routes/auth/google.callback'
 
 const PokemonGuesserRoute = PokemonGuesserRouteImport.update({
   id: '/pokemon-guesser',
@@ -34,18 +37,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthLogoutRoute = AuthLogoutRouteImport.update({
+  id: '/auth/logout',
+  path: '/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthGoogleRoute = AuthGoogleRouteImport.update({
+  id: '/auth/google',
+  path: '/auth/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthGoogleCallbackRoute = AuthGoogleCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => AuthGoogleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/auth/google': typeof AuthGoogleRouteWithChildren
+  '/auth/logout': typeof AuthLogoutRoute
+  '/auth/google/callback': typeof AuthGoogleCallbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/auth/google': typeof AuthGoogleRouteWithChildren
+  '/auth/logout': typeof AuthLogoutRoute
+  '/auth/google/callback': typeof AuthGoogleCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +77,38 @@ export interface FileRoutesById {
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/auth/google': typeof AuthGoogleRouteWithChildren
+  '/auth/logout': typeof AuthLogoutRoute
+  '/auth/google/callback': typeof AuthGoogleCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
+  fullPaths:
+    | '/'
+    | '/damage-calculator'
+    | '/games'
+    | '/pokemon-guesser'
+    | '/auth/google'
+    | '/auth/logout'
+    | '/auth/google/callback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
-  id: '__root__' | '/' | '/damage-calculator' | '/games' | '/pokemon-guesser'
+  to:
+    | '/'
+    | '/damage-calculator'
+    | '/games'
+    | '/pokemon-guesser'
+    | '/auth/google'
+    | '/auth/logout'
+    | '/auth/google/callback'
+  id:
+    | '__root__'
+    | '/'
+    | '/damage-calculator'
+    | '/games'
+    | '/pokemon-guesser'
+    | '/auth/google'
+    | '/auth/logout'
+    | '/auth/google/callback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +116,8 @@ export interface RootRouteChildren {
   DamageCalculatorRoute: typeof DamageCalculatorRoute
   GamesRoute: typeof GamesRoute
   PokemonGuesserRoute: typeof PokemonGuesserRoute
+  AuthGoogleRoute: typeof AuthGoogleRouteWithChildren
+  AuthLogoutRoute: typeof AuthLogoutRoute
 }
 
 declare module '@tanstack/solid-router' {
@@ -99,14 +150,49 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/logout': {
+      id: '/auth/logout'
+      path: '/auth/logout'
+      fullPath: '/auth/logout'
+      preLoaderRoute: typeof AuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/google': {
+      id: '/auth/google'
+      path: '/auth/google'
+      fullPath: '/auth/google'
+      preLoaderRoute: typeof AuthGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/google/callback': {
+      id: '/auth/google/callback'
+      path: '/callback'
+      fullPath: '/auth/google/callback'
+      preLoaderRoute: typeof AuthGoogleCallbackRouteImport
+      parentRoute: typeof AuthGoogleRoute
+    }
   }
 }
+
+interface AuthGoogleRouteChildren {
+  AuthGoogleCallbackRoute: typeof AuthGoogleCallbackRoute
+}
+
+const AuthGoogleRouteChildren: AuthGoogleRouteChildren = {
+  AuthGoogleCallbackRoute: AuthGoogleCallbackRoute,
+}
+
+const AuthGoogleRouteWithChildren = AuthGoogleRoute._addFileChildren(
+  AuthGoogleRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DamageCalculatorRoute: DamageCalculatorRoute,
   GamesRoute: GamesRoute,
   PokemonGuesserRoute: PokemonGuesserRoute,
+  AuthGoogleRoute: AuthGoogleRouteWithChildren,
+  AuthLogoutRoute: AuthLogoutRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -9,7 +9,11 @@
       "Bash(npx tsc --noEmit)",
       "Bash(bunx tsc:*)",
       "Bash(bun run build)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(bun add:*)",
+      "Bash(wrangler d1 create:*)",
+      "Bash(bunx wrangler d1 create:*)",
+      "Bash(bunx wrangler d1 execute:*)"
     ]
   }
 }

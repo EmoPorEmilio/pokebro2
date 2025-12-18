@@ -8,6 +8,7 @@ import {
 } from '@tanstack/solid-router'
 import { HydrationScript } from 'solid-js/web'
 import { QueryClient, QueryClientProvider } from '@tanstack/solid-query'
+import { AuthProvider } from '@/context/auth'
 import '@/styles.css'
 
 const queryClient = new QueryClient({
@@ -56,7 +57,9 @@ function RootDocument(props: { children: JSX.Element }) {
       </head>
       <body class="font-jost">
         <QueryClientProvider client={queryClient}>
-          <Suspense>{props.children}</Suspense>
+          <AuthProvider>
+            <Suspense>{props.children}</Suspense>
+          </AuthProvider>
         </QueryClientProvider>
         <Scripts />
       </body>
