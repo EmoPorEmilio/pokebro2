@@ -30,7 +30,7 @@ const initiateGoogleAuth = createServerFn({ method: 'GET' }).handler(async () =>
   })
 })
 
-export const Route = createFileRoute('/auth/google')({
+export const Route = createFileRoute('/auth/google/')({
   loader: () => initiateGoogleAuth(),
   component: () => null,
 })
