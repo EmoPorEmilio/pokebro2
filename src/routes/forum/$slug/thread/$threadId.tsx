@@ -9,7 +9,7 @@ export const Route = createFileRoute('/forum/$slug/thread/$threadId')({
 })
 
 function ThreadPage() {
-  const params = Route.useParams()
+  const { slug, threadId } = Route.useParams()
   const navigate = useNavigate()
 
   const [replyContent, setReplyContent] = createSignal('')
@@ -17,17 +17,17 @@ function ThreadPage() {
   const [error, setError] = createSignal('')
 
   const [thread, { refetch: refetchThread }] = createResource(
-    () => params.threadId,
-    async (threadId) => {
-      const result = await getThread({ data: { id: threadId } })
+    () => threadId(),
+    async (id) => {
+      const result = await getThread({ data: { id } })
       return result
     }
   )
 
   const [postsData, { refetch: refetchPosts }] = createResource(
-    () => params.threadId,
-    async (threadId) => {
-      const result = await getThreadPosts({ data: { threadId } })
+    () => threadId(),
+    async (id) => {
+      const result = await getThreadPosts({ data: { threadId: id } })
       return result
     }
   )
@@ -52,7 +52,7 @@ function ThreadPage() {
 
       await createPost({
         data: {
-          threadId: params.threadId,
+          threadId: threadId(),
           content: replyContent().trim(),
           authorId: mockUser.id,
           authorName: mockUser.name,
@@ -106,10 +106,10 @@ function ThreadPage() {
                     <span>/</span>
                     <Link
                       to="/forum/$slug"
-                      params={{ slug: params.slug }}
+                      params={{ slug: slug() }}
                       class="hover:text-accent transition-colors capitalize"
                     >
-                      {params.slug}
+                      {slug()}
                     </Link>
                     <span>/</span>
                     <span class="text-primary-200 truncate max-w-[200px]">

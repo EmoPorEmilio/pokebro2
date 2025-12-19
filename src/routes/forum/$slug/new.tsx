@@ -8,7 +8,7 @@ export const Route = createFileRoute('/forum/$slug/new')({
 })
 
 function NewThreadPage() {
-  const params = Route.useParams()
+  const { slug } = Route.useParams()
   const navigate = useNavigate()
 
   const [title, setTitle] = createSignal('')
@@ -41,7 +41,7 @@ function NewThreadPage() {
 
       const thread = await createThread({
         data: {
-          forumSlug: params.slug,
+          forumSlug: slug(),
           title: title().trim(),
           content: content().trim(),
           authorId: mockUser.id,
@@ -52,7 +52,7 @@ function NewThreadPage() {
       // Navigate to the new thread
       navigate({
         to: '/forum/$slug/thread/$threadId',
-        params: { slug: params.slug, threadId: thread.id },
+        params: { slug: slug(), threadId: thread.id },
       })
     } catch (err) {
       setError('Error al crear el tema. Intenta de nuevo.')
@@ -74,10 +74,10 @@ function NewThreadPage() {
               <span>/</span>
               <Link
                 to="/forum/$slug"
-                params={{ slug: params.slug }}
+                params={{ slug: slug() }}
                 class="hover:text-accent transition-colors capitalize"
               >
-                {params.slug}
+                {slug()}
               </Link>
               <span>/</span>
               <span class="text-primary-200">Nuevo tema</span>
@@ -131,7 +131,7 @@ function NewThreadPage() {
                 <div class="flex items-center justify-end gap-3">
                   <button
                     type="button"
-                    onClick={() => navigate({ to: '/forum/$slug', params: { slug: params.slug } })}
+                    onClick={() => navigate({ to: '/forum/$slug', params: { slug: slug() } })}
                     class="px-4 py-2 text-primary-300 hover:text-primary-100 transition-colors"
                     disabled={isSubmitting()}
                   >

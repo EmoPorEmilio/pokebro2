@@ -16,6 +16,7 @@ import { Route as DamageCalculatorRouteImport } from './routes/damage-calculator
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ForumSlugRouteImport } from './routes/forum/$slug'
 import { Route as AuthLogoutRouteImport } from './routes/auth/logout'
+import { Route as ForumSlugIndexRouteImport } from './routes/forum/$slug/index'
 import { Route as AuthGoogleIndexRouteImport } from './routes/auth/google/index'
 import { Route as ForumSlugNewRouteImport } from './routes/forum/$slug/new'
 import { Route as AuthGoogleCallbackRouteImport } from './routes/auth/google/callback'
@@ -56,6 +57,11 @@ const AuthLogoutRoute = AuthLogoutRouteImport.update({
   path: '/auth/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForumSlugIndexRoute = ForumSlugIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ForumSlugRoute,
+} as any)
 const AuthGoogleIndexRoute = AuthGoogleIndexRouteImport.update({
   id: '/auth/google/',
   path: '/auth/google/',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
   '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google': typeof AuthGoogleIndexRoute
+  '/forum/$slug/': typeof ForumSlugIndexRoute
   '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRoutesByTo {
@@ -97,10 +104,10 @@ export interface FileRoutesByTo {
   '/pokemon-guesser': typeof PokemonGuesserRoute
   '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
-  '/forum/$slug': typeof ForumSlugRouteWithChildren
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
   '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google': typeof AuthGoogleIndexRoute
+  '/forum/$slug': typeof ForumSlugIndexRoute
   '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRoutesById {
@@ -115,6 +122,7 @@ export interface FileRoutesById {
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
   '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google/': typeof AuthGoogleIndexRoute
+  '/forum/$slug/': typeof ForumSlugIndexRoute
   '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +138,7 @@ export interface FileRouteTypes {
     | '/auth/google/callback'
     | '/forum/$slug/new'
     | '/auth/google'
+    | '/forum/$slug/'
     | '/forum/$slug/thread/$threadId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -139,10 +148,10 @@ export interface FileRouteTypes {
     | '/pokemon-guesser'
     | '/showcase'
     | '/auth/logout'
-    | '/forum/$slug'
     | '/auth/google/callback'
     | '/forum/$slug/new'
     | '/auth/google'
+    | '/forum/$slug'
     | '/forum/$slug/thread/$threadId'
   id:
     | '__root__'
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/auth/google/callback'
     | '/forum/$slug/new'
     | '/auth/google/'
+    | '/forum/$slug/'
     | '/forum/$slug/thread/$threadId'
   fileRoutesById: FileRoutesById
 }
@@ -222,6 +232,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof AuthLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forum/$slug/': {
+      id: '/forum/$slug/'
+      path: '/'
+      fullPath: '/forum/$slug/'
+      preLoaderRoute: typeof ForumSlugIndexRouteImport
+      parentRoute: typeof ForumSlugRoute
+    }
     '/auth/google/': {
       id: '/auth/google/'
       path: '/auth/google'
@@ -255,11 +272,13 @@ declare module '@tanstack/solid-router' {
 
 interface ForumSlugRouteChildren {
   ForumSlugNewRoute: typeof ForumSlugNewRoute
+  ForumSlugIndexRoute: typeof ForumSlugIndexRoute
   ForumSlugThreadThreadIdRoute: typeof ForumSlugThreadThreadIdRoute
 }
 
 const ForumSlugRouteChildren: ForumSlugRouteChildren = {
   ForumSlugNewRoute: ForumSlugNewRoute,
+  ForumSlugIndexRoute: ForumSlugIndexRoute,
   ForumSlugThreadThreadIdRoute: ForumSlugThreadThreadIdRoute,
 }
 
