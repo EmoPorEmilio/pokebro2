@@ -16,10 +16,10 @@ export function Content(props: ContentProps) {
 
   return (
     <main
-      class={`flex flex-1 flex-col w-full bg-accent rounded-xl py-0.5 ${flashClass()}`}
+      class={`flex flex-1 flex-col w-full bg-accent rounded-xl py-0.5 min-h-0 ${flashClass()}`}
       onClick={props.onClick}
     >
-      <div class="flex flex-1 flex-col w-full bg-bg-100 rounded-xl justify-center items-center overflow-hidden">
+      <div class="flex flex-1 flex-col w-full bg-bg-100 rounded-xl overflow-hidden min-h-0">
         {props.children}
       </div>
     </main>

@@ -17,8 +17,8 @@ export function Header(props: HeaderProps) {
   const { user } = useAuth()
 
   return (
-    <nav class="h-14 w-full">
-      <div class="px-4 flex w-full mx-auto h-full items-center justify-between">
+    <nav class="h-16 w-full py-2">
+      <div class="px-5 flex w-full mx-auto h-full items-center justify-between">
         <Logo onClick={() => navigate({ to: '/' })} />
         <Show when={props.inGame}>
           <ScoreDisplay

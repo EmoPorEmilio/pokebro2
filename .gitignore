@@ -39,4 +39,10 @@ next-env.d.ts
 sql.dev.vars
 .dev.vars
 
+# wrangler
+.wrangler/
+
+# forum data (local dev)
+forum-data.json
+
 .claude/

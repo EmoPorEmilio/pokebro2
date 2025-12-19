@@ -11,8 +11,8 @@ export function BottomNav(props: BottomNavProps) {
     props.activeTab === tab ? '#B8DFFF' : '#4C6477'
 
   return (
-    <nav class="h-14 w-full shrink-0">
-      <div class="flex w-full mx-auto h-full items-center justify-between px-8">
+    <nav class="h-16 w-full shrink-0 py-2">
+      <div class="flex w-full mx-auto h-full items-center justify-between px-10">
         <button
           class="hover:opacity-80 transition-opacity"
           onClick={() => navigate({ to: '/' })}

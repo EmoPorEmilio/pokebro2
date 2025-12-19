@@ -9,14 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as PokemonGuesserRouteImport } from './routes/pokemon-guesser'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as DamageCalculatorRouteImport } from './routes/damage-calculator'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForumSlugRouteImport } from './routes/forum/$slug'
 import { Route as AuthLogoutRouteImport } from './routes/auth/logout'
 import { Route as AuthGoogleIndexRouteImport } from './routes/auth/google/index'
+import { Route as ForumSlugNewRouteImport } from './routes/forum/$slug/new'
 import { Route as AuthGoogleCallbackRouteImport } from './routes/auth/google/callback'
+import { Route as ForumSlugThreadThreadIdRouteImport } from './routes/forum/$slug/thread/$threadId'
 
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PokemonGuesserRoute = PokemonGuesserRouteImport.update({
   id: '/pokemon-guesser',
   path: '/pokemon-guesser',
@@ -37,6 +46,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForumSlugRoute = ForumSlugRouteImport.update({
+  id: '/forum/$slug',
+  path: '/forum/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthLogoutRoute = AuthLogoutRouteImport.update({
   id: '/auth/logout',
   path: '/auth/logout',
@@ -47,10 +61,20 @@ const AuthGoogleIndexRoute = AuthGoogleIndexRouteImport.update({
   path: '/auth/google/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForumSlugNewRoute = ForumSlugNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => ForumSlugRoute,
+} as any)
 const AuthGoogleCallbackRoute = AuthGoogleCallbackRouteImport.update({
   id: '/auth/google/callback',
   path: '/auth/google/callback',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ForumSlugThreadThreadIdRoute = ForumSlugThreadThreadIdRouteImport.update({
+  id: '/thread/$threadId',
+  path: '/thread/$threadId',
+  getParentRoute: () => ForumSlugRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -58,18 +82,26 @@ export interface FileRoutesByFullPath {
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
+  '/forum/$slug': typeof ForumSlugRouteWithChildren
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
+  '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google': typeof AuthGoogleIndexRoute
+  '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
+  '/forum/$slug': typeof ForumSlugRouteWithChildren
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
+  '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google': typeof AuthGoogleIndexRoute
+  '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +109,13 @@ export interface FileRoutesById {
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
+  '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
+  '/forum/$slug': typeof ForumSlugRouteWithChildren
   '/auth/google/callback': typeof AuthGoogleCallbackRoute
+  '/forum/$slug/new': typeof ForumSlugNewRoute
   '/auth/google/': typeof AuthGoogleIndexRoute
+  '/forum/$slug/thread/$threadId': typeof ForumSlugThreadThreadIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +124,39 @@ export interface FileRouteTypes {
     | '/damage-calculator'
     | '/games'
     | '/pokemon-guesser'
+    | '/showcase'
     | '/auth/logout'
+    | '/forum/$slug'
     | '/auth/google/callback'
+    | '/forum/$slug/new'
     | '/auth/google'
+    | '/forum/$slug/thread/$threadId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/damage-calculator'
     | '/games'
     | '/pokemon-guesser'
+    | '/showcase'
     | '/auth/logout'
+    | '/forum/$slug'
     | '/auth/google/callback'
+    | '/forum/$slug/new'
     | '/auth/google'
+    | '/forum/$slug/thread/$threadId'
   id:
     | '__root__'
     | '/'
     | '/damage-calculator'
     | '/games'
     | '/pokemon-guesser'
+    | '/showcase'
     | '/auth/logout'
+    | '/forum/$slug'
     | '/auth/google/callback'
+    | '/forum/$slug/new'
     | '/auth/google/'
+    | '/forum/$slug/thread/$threadId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,13 +164,22 @@ export interface RootRouteChildren {
   DamageCalculatorRoute: typeof DamageCalculatorRoute
   GamesRoute: typeof GamesRoute
   PokemonGuesserRoute: typeof PokemonGuesserRoute
+  ShowcaseRoute: typeof ShowcaseRoute
   AuthLogoutRoute: typeof AuthLogoutRoute
+  ForumSlugRoute: typeof ForumSlugRouteWithChildren
   AuthGoogleCallbackRoute: typeof AuthGoogleCallbackRoute
   AuthGoogleIndexRoute: typeof AuthGoogleIndexRoute
 }
 
 declare module '@tanstack/solid-router' {
   interface FileRoutesByPath {
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pokemon-guesser': {
       id: '/pokemon-guesser'
       path: '/pokemon-guesser'
@@ -151,6 +208,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forum/$slug': {
+      id: '/forum/$slug'
+      path: '/forum/$slug'
+      fullPath: '/forum/$slug'
+      preLoaderRoute: typeof ForumSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/logout': {
       id: '/auth/logout'
       path: '/auth/logout'
@@ -165,6 +229,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof AuthGoogleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forum/$slug/new': {
+      id: '/forum/$slug/new'
+      path: '/new'
+      fullPath: '/forum/$slug/new'
+      preLoaderRoute: typeof ForumSlugNewRouteImport
+      parentRoute: typeof ForumSlugRoute
+    }
     '/auth/google/callback': {
       id: '/auth/google/callback'
       path: '/auth/google/callback'
@@ -172,15 +243,38 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof AuthGoogleCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forum/$slug/thread/$threadId': {
+      id: '/forum/$slug/thread/$threadId'
+      path: '/thread/$threadId'
+      fullPath: '/forum/$slug/thread/$threadId'
+      preLoaderRoute: typeof ForumSlugThreadThreadIdRouteImport
+      parentRoute: typeof ForumSlugRoute
+    }
   }
 }
+
+interface ForumSlugRouteChildren {
+  ForumSlugNewRoute: typeof ForumSlugNewRoute
+  ForumSlugThreadThreadIdRoute: typeof ForumSlugThreadThreadIdRoute
+}
+
+const ForumSlugRouteChildren: ForumSlugRouteChildren = {
+  ForumSlugNewRoute: ForumSlugNewRoute,
+  ForumSlugThreadThreadIdRoute: ForumSlugThreadThreadIdRoute,
+}
+
+const ForumSlugRouteWithChildren = ForumSlugRoute._addFileChildren(
+  ForumSlugRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DamageCalculatorRoute: DamageCalculatorRoute,
   GamesRoute: GamesRoute,
   PokemonGuesserRoute: PokemonGuesserRoute,
+  ShowcaseRoute: ShowcaseRoute,
   AuthLogoutRoute: AuthLogoutRoute,
+  ForumSlugRoute: ForumSlugRouteWithChildren,
   AuthGoogleCallbackRoute: AuthGoogleCallbackRoute,
   AuthGoogleIndexRoute: AuthGoogleIndexRoute,
 }
