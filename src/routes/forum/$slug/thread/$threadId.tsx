@@ -9,7 +9,7 @@ export const Route = createFileRoute('/forum/$slug/thread/$threadId')({
 })
 
 function ThreadPage() {
-  const { slug, threadId } = Route.useParams()
+  const params = Route.useParams()
   const navigate = useNavigate()
 
   const [replyContent, setReplyContent] = createSignal('')
@@ -17,7 +17,7 @@ function ThreadPage() {
   const [error, setError] = createSignal('')
 
   const [thread, { refetch: refetchThread }] = createResource(
-    () => threadId(),
+    () => params().threadId,
     async (id) => {
       const result = await getThread({ data: { id } })
       return result
@@ -25,7 +25,7 @@ function ThreadPage() {
   )
 
   const [postsData, { refetch: refetchPosts }] = createResource(
-    () => threadId(),
+    () => params().threadId,
     async (id) => {
       const result = await getThreadPosts({ data: { threadId: id } })
       return result
@@ -52,7 +52,7 @@ function ThreadPage() {
 
       await createPost({
         data: {
-          threadId: threadId(),
+          threadId: params().threadId,
           content: replyContent().trim(),
           authorId: mockUser.id,
           authorName: mockUser.name,
@@ -106,10 +106,10 @@ function ThreadPage() {
                     <span>/</span>
                     <Link
                       to="/forum/$slug"
-                      params={{ slug: slug() }}
+                      params={{ slug: params().slug }}
                       class="hover:text-accent transition-colors capitalize"
                     >
-                      {slug()}
+                      {params().slug}
                     </Link>
                     <span>/</span>
                     <span class="text-primary-200 truncate max-w-[200px]">

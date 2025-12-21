@@ -30,17 +30,17 @@ const forumMeta: Record<string, { title: string; description: string }> = {
 }
 
 function ForumPage() {
-  const { slug } = Route.useParams()
+  const params = Route.useParams()
 
   const [threadsData] = createResource(
-    () => slug(),
+    () => params().slug,
     async (forumSlug) => {
       const result = await getForumThreads({ data: { forumSlug } })
       return result
     }
   )
 
-  const forum = () => forumMeta[slug()] ?? { title: slug(), description: '' }
+  const forum = () => forumMeta[params().slug] ?? { title: params().slug, description: '' }
 
   return (
     <div class="flex flex-col h-dvh w-dvw bg-bg-400 antialiased overflow-hidden">
@@ -63,12 +63,13 @@ function ForumPage() {
                 <h1 class="text-2xl font-bold text-accent mb-2">{forum().title}</h1>
                 <p class="text-primary-400">{forum().description}</p>
               </div>
-              <a
-                href={`/forum/${slug()}/new`}
+              <Link
+                to="/forum/$slug/new"
+                params={{ slug: params().slug }}
                 class="px-4 py-2 bg-accent text-bg-400 rounded-lg font-medium hover:bg-accent/90 transition-colors shrink-0 cursor-pointer"
               >
                 Crear tema
-              </a>
+              </Link>
             </div>
 
             {/* Threads List */}
@@ -82,7 +83,7 @@ function ForumPage() {
             >
               <Show
                 when={threadsData()?.items.length}
-                fallback={<EmptyState slug={slug()} />}
+                fallback={<EmptyState slug={params().slug} />}
               >
                 <div class="bg-bg-300 rounded-xl overflow-hidden border border-primary-700/30">
                   <For each={threadsData()?.items}>
@@ -201,12 +202,13 @@ function EmptyState(props: { slug: string }) {
       </div>
       <h2 class="text-lg font-semibold text-primary-200 mb-2">No hay temas todavía</h2>
       <p class="text-primary-400 text-sm mb-4">Sé el primero en crear un tema en este foro</p>
-      <a
-        href={`/forum/${props.slug}/new`}
+      <Link
+        to="/forum/$slug/new"
+        params={{ slug: props.slug }}
         class="inline-block px-4 py-2 bg-accent text-bg-400 rounded-lg font-medium hover:bg-accent/90 transition-colors cursor-pointer"
       >
         Crear nuevo tema
-      </a>
+      </Link>
     </div>
   )
 }
