@@ -88,6 +88,14 @@ export class FilePostRepository implements IPostRepository {
 
     return true
   }
+
+  async findByAuthorId(authorId: string, limit = 10): Promise<Post[]> {
+    const storage = readStorage()
+    return storage.posts
+      .filter((p) => p.authorId === authorId)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .slice(0, limit)
+  }
 }
 
 // Singleton instance

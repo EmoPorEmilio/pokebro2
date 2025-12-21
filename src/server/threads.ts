@@ -56,3 +56,19 @@ export const createPost = createServerFn({ method: 'POST' }).handler(
     return post
   }
 )
+
+// Get threads created by a specific user
+export const getUserThreads = createServerFn({ method: 'GET' }).handler(
+  async (ctx: { data: { authorId: string; limit?: number } }): Promise<Thread[]> => {
+    const threadRepo = getThreadRepository()
+    return threadRepo.findByAuthorId(ctx.data.authorId, ctx.data.limit ?? 10)
+  }
+)
+
+// Get posts (replies) created by a specific user
+export const getUserPosts = createServerFn({ method: 'GET' }).handler(
+  async (ctx: { data: { authorId: string; limit?: number } }): Promise<Post[]> => {
+    const postRepo = getPostRepository()
+    return postRepo.findByAuthorId(ctx.data.authorId, ctx.data.limit ?? 10)
+  }
+)

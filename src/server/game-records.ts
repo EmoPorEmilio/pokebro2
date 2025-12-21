@@ -108,19 +108,29 @@ export const getUserStats = createServerFn({ method: 'GET' }).handler(async () =
 
   const records = await db.select().from(gameRecords).where(eq(gameRecords.userId, session.userId))
 
-  const pokemonGuesserRecords = records.filter((r) => r.gameMode === 'pokemon-guesser')
-  const damageCalculatorRecords = records.filter((r) => r.gameMode === 'damage-calculator')
+  // Filter records from last 30 days
+  const thirtyDaysAgo = new Date()
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+  const recentRecords = records.filter((r) => new Date(r.completedAt) >= thirtyDaysAgo)
 
-  const stats = {
-    totalGames: records.length,
-    totalScore: records.reduce((sum, r) => sum + r.score, 0),
-    highScorePokemonGuesser:
-      pokemonGuesserRecords.length > 0 ? Math.max(...pokemonGuesserRecords.map((r) => r.score)) : 0,
-    highScoreDamageCalculator:
-      damageCalculatorRecords.length > 0 ? Math.max(...damageCalculatorRecords.map((r) => r.score)) : 0,
-    averageScore:
-      records.length > 0 ? Math.round(records.reduce((sum, r) => sum + r.score, 0) / records.length) : 0,
+  const getStats = (recs: typeof records) => {
+    const pokemonGuesserRecords = recs.filter((r) => r.gameMode === 'pokemon-guesser')
+    const damageCalculatorRecords = recs.filter((r) => r.gameMode === 'damage-calculator')
+
+    return {
+      totalGames: recs.length,
+      totalScore: recs.reduce((sum, r) => sum + r.score, 0),
+      highScorePokemonGuesser:
+        pokemonGuesserRecords.length > 0 ? Math.max(...pokemonGuesserRecords.map((r) => r.score)) : 0,
+      highScoreDamageCalculator:
+        damageCalculatorRecords.length > 0 ? Math.max(...damageCalculatorRecords.map((r) => r.score)) : 0,
+      averageScore:
+        recs.length > 0 ? Math.round(recs.reduce((sum, r) => sum + r.score, 0) / recs.length) : 0,
+    }
   }
 
-  return stats
+  return {
+    allTime: getStats(records),
+    last30Days: getStats(recentRecords),
+  }
 })

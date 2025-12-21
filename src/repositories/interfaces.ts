@@ -14,6 +14,7 @@ export interface IThreadRepository {
   create(input: CreateThreadInput): Promise<Thread>
   findById(id: string): Promise<Thread | null>
   findByForumSlug(query: ThreadListQuery): Promise<PaginatedResponse<Thread>>
+  findByAuthorId(authorId: string, limit?: number): Promise<Thread[]>
   update(input: UpdateThreadInput): Promise<Thread | null>
   delete(id: string): Promise<boolean>
   incrementReplyCount(threadId: string, lastReplyAuthor: string): Promise<void>
@@ -23,6 +24,7 @@ export interface IPostRepository {
   create(input: CreatePostInput): Promise<Post>
   findById(id: string): Promise<Post | null>
   findByThreadId(query: PostListQuery): Promise<PaginatedResponse<Post>>
+  findByAuthorId(authorId: string, limit?: number): Promise<Post[]>
   update(input: UpdatePostInput): Promise<Post | null>
   delete(id: string): Promise<boolean>
 }

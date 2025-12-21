@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as PokemonGuesserRouteImport } from './routes/pokemon-guesser'
+import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as DamageCalculatorRouteImport } from './routes/damage-calculator'
 import { Route as IndexRouteImport } from './routes/index'
@@ -30,6 +31,11 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
 const PokemonGuesserRoute = PokemonGuesserRouteImport.update({
   id: '/pokemon-guesser',
   path: '/pokemon-guesser',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GamesRoute = GamesRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
+  '/perfil': typeof PerfilRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
   '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
+  '/perfil': typeof PerfilRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
   '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/damage-calculator': typeof DamageCalculatorRoute
   '/games': typeof GamesRoute
+  '/perfil': typeof PerfilRoute
   '/pokemon-guesser': typeof PokemonGuesserRoute
   '/showcase': typeof ShowcaseRoute
   '/auth/logout': typeof AuthLogoutRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/'
     | '/damage-calculator'
     | '/games'
+    | '/perfil'
     | '/pokemon-guesser'
     | '/showcase'
     | '/auth/logout'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
     | '/'
     | '/damage-calculator'
     | '/games'
+    | '/perfil'
     | '/pokemon-guesser'
     | '/showcase'
     | '/auth/logout'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
     | '/'
     | '/damage-calculator'
     | '/games'
+    | '/perfil'
     | '/pokemon-guesser'
     | '/showcase'
     | '/auth/logout'
@@ -173,6 +185,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DamageCalculatorRoute: typeof DamageCalculatorRoute
   GamesRoute: typeof GamesRoute
+  PerfilRoute: typeof PerfilRoute
   PokemonGuesserRoute: typeof PokemonGuesserRoute
   ShowcaseRoute: typeof ShowcaseRoute
   AuthLogoutRoute: typeof AuthLogoutRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/solid-router' {
       path: '/pokemon-guesser'
       fullPath: '/pokemon-guesser'
       preLoaderRoute: typeof PokemonGuesserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/games': {
@@ -290,6 +310,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DamageCalculatorRoute: DamageCalculatorRoute,
   GamesRoute: GamesRoute,
+  PerfilRoute: PerfilRoute,
   PokemonGuesserRoute: PokemonGuesserRoute,
   ShowcaseRoute: ShowcaseRoute,
   AuthLogoutRoute: AuthLogoutRoute,

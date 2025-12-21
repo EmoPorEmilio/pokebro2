@@ -113,6 +113,14 @@ export class FileThreadRepository implements IThreadRepository {
       writeStorage(storage)
     }
   }
+
+  async findByAuthorId(authorId: string, limit = 10): Promise<Thread[]> {
+    const storage = readStorage()
+    return storage.threads
+      .filter((t) => t.authorId === authorId)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .slice(0, limit)
+  }
 }
 
 // Singleton instance
